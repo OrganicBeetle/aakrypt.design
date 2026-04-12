@@ -32,7 +32,7 @@ const CollageWheel = () => {
   const RADIUS = 380; // Constant radius for authentic wheel feeling
 
   return (
-    <section className="relative flex h-screen w-full items-center overflow-hidden">
+    <section id="about" className="relative flex h-screen w-full items-center overflow-hidden">
       {/* Background Image */}
       <img
         src={backgroundAbout}

@@ -74,7 +74,9 @@ function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
       />
-      <div className="pointer-events-none absolute inset-0 bg-white/6" />
+      <div className="portfolio-side-text" aria-hidden="true">
+        PORTFOLIO
+      </div>
 
       <div className="relative z-10 min-h-screen w-full">
         <div className="absolute inset-0 flex items-center justify-center">

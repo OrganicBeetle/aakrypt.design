@@ -70,11 +70,12 @@ const RotatingWheel = () => {
         }}
       >
         <motion.div
-          animate={{ rotate: [0, 360] }}
+          animate={{ rotate: 360 }}
           transition={{
             duration: 32,
             ease: "linear",
             repeat: Infinity,
+            repeatType: "loop",
           }}
           className="relative flex h-full w-full items-center justify-center"
           style={{ 
@@ -83,15 +84,14 @@ const RotatingWheel = () => {
           }}
         >
           {IMAGES.map((src, index) => {
-            // Distribute images into 4 quadrants with organic offsets
+            // Distribute images evenly around the circle
             const baseAngle = (index / totalImages) * 360;
             
-            // Subtle offset: Slightly varies the angle and radius for a non-perfect "human" feel
+            // Subtle offset: Slightly varies the angle for a non-perfect "human" feel
             const angleOffset = (index % 3) * 5 - 5; 
-            const radiusOffset = (index % 2) * 30 - 15;
             
             const angle = baseAngle + angleOffset;
-            const radius = wheelRadius + radiusOffset;
+            const radius = wheelRadius; // All images at same radius - adjust per image below if needed
 
             // Polar to Cartesian conversion for positioning
             const x = Math.cos((angle * Math.PI) / 180) * radius;

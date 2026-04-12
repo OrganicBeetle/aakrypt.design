@@ -44,7 +44,9 @@ const DesignPhilosophy = () => {
   const ROTATION_DURATION = 45; // Seconds for a full loop
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-black font-body">
+    <section 
+      className="relative z-50 h-screen w-full overflow-hidden bg-charcoal font-body"
+    >
       {/* Background with optimized cover and subtle parallax-ready positioning */}
       <motion.div 
         className="absolute inset-0 z-0"

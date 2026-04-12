@@ -79,7 +79,7 @@ function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="bg-ink px-6 py-20 text-chalk sm:px-10 sm:py-24 lg:px-14 lg:py-32"
+      className="bg-charcoal px-6 py-20 text-chalk sm:px-10 sm:py-24 lg:px-14 lg:py-32"
     >
       <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[minmax(280px,400px)_minmax(0,1fr)] lg:gap-20">
         <div className="lg:min-h-[140vh]">

@@ -100,6 +100,7 @@ const itemVariants = {
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isDark, setIsDark] = useState(false)
+  const [isWorkSection, setIsWorkSection] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useLayoutEffect(() => {
@@ -110,18 +111,27 @@ function Navbar() {
       },
     })
 
-    // Detect dark sections (CollageWheel onwards)
     const darkTrigger = ScrollTrigger.create({
       trigger: 'main',
-      start: 'top -80%', // Roughly when Hero leaves
+      start: 'top -80%', 
       onToggle: (self) => {
         setIsDark(self.isActive)
+      },
+    })
+
+    const workTrigger = ScrollTrigger.create({
+      trigger: '#work',
+      start: 'top 120px',
+      end: 'bottom top',
+      onToggle: (self) => {
+        setIsWorkSection(self.isActive)
       },
     })
 
     return () => {
       scrollTrigger.kill()
       darkTrigger.kill()
+      workTrigger.kill()
     }
   }, [])
 
@@ -138,7 +148,9 @@ function Navbar() {
     <>
       <header
         className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ease-in-out ${
-          isScrolled
+          isWorkSection
+            ? 'border-b border-white/5 bg-[#585757]/80 py-2 backdrop-blur-md'
+            : isScrolled
             ? isDark
               ? 'border-b border-white/5 bg-[#2c353c]/80 py-2 backdrop-blur-md'
               : 'border-b border-charcoal/5 bg-paper/75 py-2 backdrop-blur-md'

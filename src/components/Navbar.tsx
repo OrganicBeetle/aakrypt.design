@@ -51,17 +51,17 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        <svg className={styles.navSvg} viewBox="0 0 100 20" fill="none" preserveAspectRatio="none">
+        <svg className={styles.navSvg} viewBox="0 0 100 10" fill="none" preserveAspectRatio="none">
           <path
             ref={pathRef}
             id="navPath"
-            d="M0,10 L100,10" 
+            d="M0,5 L100,5" 
             className={styles.pathLine}
           />
           <circle
             ref={dotRef}
             id="navDot"
-            r="1.5"
+            r="1.2"
             className={styles.dot}
           />
         </svg>

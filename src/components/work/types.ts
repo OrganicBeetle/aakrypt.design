@@ -4,4 +4,5 @@ export interface ProjectData {
   pdf: string;
   index: string;
   gridClass: string;
+  poster?: string;
 }

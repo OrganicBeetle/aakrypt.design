@@ -25,9 +25,13 @@
       linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 240, 238, 0.98));
   }
 
-  * {
+  *:not(.modal-open, .modal-open *) {
     box-sizing: border-box;
     cursor: none !important;
+  }
+
+  body.modal-open .custom-cursor {
+    display: none !important;
   }
 
   html {

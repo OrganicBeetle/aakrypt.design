@@ -7,7 +7,6 @@
   padding: 10vh 4vw;
   position: relative;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .gridContainer {
@@ -189,14 +188,13 @@
 }
 
 .scrollOverlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: #0a0a0a;
   z-index: 50;
-  transform: translateY(-100%);
   pointer-events: none;
 }
 
@@ -205,12 +203,26 @@
   bottom: 4vw;
   left: 4vw;
   font-family: 'Anton', sans-serif;
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: 8vw;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 0.9;
+  letter-spacing: -0.03em;
+  line-height: 0.8;
   color: #F1F0EE;
   pointer-events: none;
   max-width: 300px;
   z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .workLabel {
+    font-size: 4rem;
+    letter-spacing: -0.03em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .workLabel {
+    font-size: 5.6rem;
+    letter-spacing: -0.03em;
+  }
 }

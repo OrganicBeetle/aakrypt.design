@@ -18,7 +18,7 @@ function Hero() {
       section.querySelectorAll<HTMLElement>('[data-hero-intro]'),
     )
     const navItems = Array.from(
-      document.querySelectorAll<HTMLElement>('[data-nav-link], [data-nav-brand]'),
+      document.querySelectorAll<HTMLElement>('[data-nav-link]'),
     )
     const heroImage = section.querySelector<HTMLElement>('[data-hero-image]')
 

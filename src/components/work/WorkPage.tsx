@@ -12,7 +12,15 @@ gsap.registerPlugin(ScrollTrigger)
 const projects: ProjectData[] = [
   { title: "bag", video: "/videos/bag.mp4", pdf: "/pdfs/bag.pdf", index: "01/09", gridClass: "bag" },
   { title: "illustrations", video: "/videos/illustrations.mp4", pdf: "/pdfs/illustrations.pdf", index: "02/09", gridClass: "illustrations" },
-  { title: "denim", video: "/videos/denim.mp4", pdf: "/pdfs/denim.pdf", index: "03/09", gridClass: "denim" },
+  { 
+    title: "Etched: Denim", 
+    video: "/videos/denim.mp4", 
+    poster: "/poster/denim_thumbnail.png",
+    pdf: "https://drive.google.com/file/d/1bbR_sK_xz3qWEG45knMkvN1t-KDwrK0Y/preview", 
+    index: "03/09", 
+    gridClass: "denim" 
+  },
+
   { title: "shirt", video: "/videos/shirt.mp4", pdf: "/pdfs/shirt.pdf", index: "04/09", gridClass: "shirt" },
   { title: "transform ii", video: "/videos/transform_ii.mp4", pdf: "/pdfs/transform_ii.pdf", index: "05/09", gridClass: "transform_ii" },
   { title: "transform i", video: "/videos/transform_i.mp4", pdf: "/pdfs/transform_i.pdf", index: "06/09", gridClass: "transform_i" },
@@ -25,22 +33,62 @@ const WorkPage: React.FC = () => {
   const [activeProject, setActiveProject] = useState<ProjectData | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
+  const labelRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
-    if (!overlayRef.current) return
-
     const ctx = gsap.context(() => {
-      gsap.to(overlayRef.current, {
-        y: "-100%",
-        ease: "power2.inOut",
-        duration: 1.5,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          once: true
-        }
-      })
-    })
+      // 1. Reveal Overlay Animation
+      if (overlayRef.current) {
+        gsap.to(overlayRef.current, {
+          y: "-100%",
+          ease: "power2.inOut",
+          duration: 1.2,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 95%", // Start very early as it enters
+            once: true
+          }
+        })
+      }
+
+      // 2. Projects Label Animation (Snappy fade-in as it peeks from bottom)
+      if (labelRef.current) {
+        gsap.fromTo(labelRef.current, 
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: labelRef.current,
+              start: "top 98%", // Start as soon as it peeks
+              end: "top 85%",   // Finish quickly
+              scrub: 0.3,
+            }
+          }
+        )
+      }
+
+      // 3. Project Cards Staggered Fade-in (Short and snappy)
+      const cards = containerRef.current?.querySelectorAll(`.${styles.projectCard}`)
+      if (cards && cards.length > 0) {
+        gsap.fromTo(cards,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.05,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 85%", // Trigger earlier as the section enters
+              toggleActions: "play none none reverse"
+            }
+          }
+        )
+      }
+    }, containerRef)
 
     return () => ctx.revert()
   }, [])
@@ -57,7 +105,7 @@ const WorkPage: React.FC = () => {
     <div ref={containerRef} className={styles.workPage}>
       <div ref={overlayRef} className={styles.scrollOverlay} />
 
-      <div className={styles.workLabel}>
+      <div ref={labelRef} className={styles.workLabel}>
         Projects
       </div>
 

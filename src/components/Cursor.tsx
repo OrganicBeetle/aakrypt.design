@@ -95,7 +95,7 @@ function Cursor() {
   return (
     <>
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[9999] rounded-full"
+        className="custom-cursor pointer-events-none fixed left-0 top-0 z-[9999] rounded-full"
         style={{
           x: dotX,
           y: dotY,
@@ -113,7 +113,7 @@ function Cursor() {
         transition={{ type: 'spring', stiffness: 500, damping: 35 }}
       />
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[9998] rounded-full border border-charcoal/70"
+        className="custom-cursor pointer-events-none fixed left-0 top-0 z-[9998] rounded-full border border-charcoal/70"
         style={{
           x: ringX,
           y: ringY,

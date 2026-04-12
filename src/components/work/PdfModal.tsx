@@ -14,6 +14,12 @@ const PdfModal: React.FC<Props> = ({ project, isActive, onClose }) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (isActive) {
+      document.body.classList.add('modal-open')
+    } else {
+      document.body.classList.remove('modal-open')
+    }
+    
     if (!isActive || !containerRef.current) return
 
     const ctx = gsap.context(() => {

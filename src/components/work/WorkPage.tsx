@@ -58,7 +58,7 @@ const WorkPage: React.FC = () => {
       <div ref={overlayRef} className={styles.scrollOverlay} />
 
       <div className={styles.workLabel}>
-        My Work
+        Projects
       </div>
 
       <GridLayout>

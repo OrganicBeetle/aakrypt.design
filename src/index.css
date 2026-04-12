@@ -27,11 +27,13 @@
 
   * {
     box-sizing: border-box;
+    cursor: none !important;
   }
 
   html {
     min-height: 100%;
     background-color: #f1f0ee;
+    overflow-x: hidden;
   }
 
   body {
@@ -51,6 +53,7 @@
     color: #2c353c;
     font-family: 'Space Grotesk', sans-serif;
     cursor: none;
+    overflow-x: hidden;
   }
 
   #root {

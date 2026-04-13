@@ -5,6 +5,47 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: 'TAN Astoria';
+    src: url('./assets/fonts/TAN-ASTORIA-Display.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Extenda';
+    src: url('./assets/fonts/extenda-60-giga.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Biro Script Plus';
+    src: url('./assets/fonts/biro-script-plus.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'TAN Astoria', serif;
+  }
+  .font-extenda {
+    font-family: 'Extenda', sans-serif;
+  }
+  .font-script {
+    font-family: 'Biro Script Plus', cursive;
+  }
+  .font-ui {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
   :root {
     color: #2c353c;
     background-color: #f1f0ee;

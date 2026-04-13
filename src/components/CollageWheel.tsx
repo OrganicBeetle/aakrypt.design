@@ -12,7 +12,9 @@ import digicrow from '../assets/image-wheel/digi crow.png';
 import puppet from '../assets/image-wheel/puppet.png';
 import eye from '../assets/image-wheel/eye.png';
 import printBodice from '../assets/image-wheel/print bodice jpeg.png';
-import backgroundAbout from '../assets/background_about.png';
+import philosophyBg from '../assets/DesignPhilosophy/landing_page.png';
+import cowUdder from '../assets/DesignPhilosophy/cow udder white.png';
+import circleDecor from '../assets/DesignPhilosophy/circle.png';
 
 const images = [
   { src: printBodice, scale: 1, z: 4 },
@@ -35,28 +37,57 @@ const CollageWheel = () => {
     <section id="about" className="relative flex h-screen w-full items-center overflow-hidden">
       {/* Background Image */}
       <img
-        src={backgroundAbout}
+        src={philosophyBg}
         alt=""
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-center"
         aria-hidden="true"
       />
       
-      <div className="absolute inset-0 bg-black/5 pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none" />
 
-      {/* Left Content Area (Reserved for Text) */}
+      {/* Left Content Area */}
       <div className="relative z-20 w-1/2 px-12 lg:px-24">
+        {/* Background Decorative Character (Behind text block) */}
+        <div className="absolute left-[40%] top-4/5 -translate-y-1/2 -z-10 pointer-events-none select-none">
+          <img 
+            src={cowUdder} 
+            alt="" 
+            className="relative w-[100%] max-w-[400px] opacity-[0.5]" 
+          />
+        </div>
+
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="max-w-xl"
         >
-          <h2 className="font-anton text-[7vw] leading-[0.8] text-paper sm:text-[4.5rem] lg:text-[5.5rem] uppercase italic">
-            How I Create
-          </h2>
-          <div className="mt-5 h-px w-20 bg-accent/40" />
-          <p className="mt-2 font-Cormorant Garamond text-[20px] leading-relaxed text-paper/80 max-w-md">
-            Keeping the vision rooted in concept through <span className='bg-[#2C353C] font-Cormorant Garamond'>context based experimentation.</span>
+          {/* Hand-placed Heading Composition */}
+          <div className="relative mb-2 select-none">
+            {/* Overlay Script: HOW I */}
+            <span 
+              className="absolute -top-5 -left-4 z-10 font-script text-[clamp(2rem,5vw,3.5rem)] text-white"
+              style={{ transform: 'rotate(-12deg)', transformOrigin: 'bottom left' }}
+            >
+              How I
+            </span>
+            
+            {/* Main Display: CREATE */}
+            <h2 className="relative z-0 font-extenda text-[clamp(80px,10vw,160px)] leading-[0.8] text-[#C61212] uppercase tracking-[0.002em]">
+              Create
+            </h2>
+          </div>
+          
+          <p className="mt-2 font-mono text-[18px] leading-relaxed text-white/85 max-w-md">
+            I dissect concepts into fragments: color, texture, context; often extending into original 
+            <span className="relative inline-block px-2 mx-1">
+              <img 
+                src={circleDecor} 
+                alt="" 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] max-w-none scale-[0.9] opacity-[0.9] -z-10" 
+              />
+              <span className='font-mono'>characters.</span>
+            </span>
           </p>
         </motion.div>
       </div>
@@ -80,15 +111,10 @@ const CollageWheel = () => {
           }}
         >
           {images.map((img, index) => {
-            // Calculate equidistant angle
             const angle = (index * 360) / images.length;
-            
-            // Convert angle to radians for x, y positioning
             const rad = (angle * Math.PI) / 180;
             const x = RADIUS * Math.cos(rad);
             const y = RADIUS * Math.sin(rad);
-
-            // Tangential rotation (90deg offset to align "top" outwards)
             const rotation = angle + 90;
 
             return (
@@ -112,7 +138,6 @@ const CollageWheel = () => {
                     alt=""
                     className="max-w-[280px] h-auto transition-transform duration-500 group-hover:scale-110"
                     style={{ 
-                      // Using only drop-shadow to respect PNG transparency
                       filter: 'drop-shadow(0 15px 35px rgba(0,0,0,0.3))',
                       WebkitBackfaceVisibility: 'hidden'
                     }}

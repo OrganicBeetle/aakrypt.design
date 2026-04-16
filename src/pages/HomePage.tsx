@@ -1,9 +1,8 @@
 import Contact from '../sections/Contact'
 import Hero from '../sections/Hero'
-import Process from '../sections/Process'
-import Skills from '../sections/Skills'
 import Work from '../sections/Work'
 import CollageWheel from '../components/CollageWheel'
+import AboutMe from '../sections/AboutMe'
 import { useEffect } from 'react'
 
 function HomePage() {
@@ -19,8 +18,7 @@ function HomePage() {
       <Hero />
       <CollageWheel />
       <Work />
-      <Skills />
-      <Process />
+      <AboutMe />
       <Contact />
     </main>
   )

@@ -202,27 +202,20 @@
   position: absolute;
   bottom: 4vw;
   left: 4vw;
-  font-family: 'Anton', sans-serif;
-  font-size: 8vw;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-  line-height: 0.8;
-  color: #F1F0EE;
   pointer-events: none;
-  max-width: 300px;
   z-index: 10;
 }
 
 @media (min-width: 640px) {
   .workLabel {
-    font-size: 4rem;
-    letter-spacing: -0.03em;
+    bottom: 3vw;
+    left: 4vw;
   }
 }
 
 @media (min-width: 1024px) {
   .workLabel {
-    font-size: 5.6rem;
-    letter-spacing: -0.03em;
+    bottom: 2vw;
+    left: 4vw;
   }
 }

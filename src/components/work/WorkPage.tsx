@@ -32,25 +32,10 @@ const projects: ProjectData[] = [
 const WorkPage: React.FC = () => {
   const [activeProject, setActiveProject] = useState<ProjectData | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const overlayRef = useRef<HTMLDivElement>(null)
   const labelRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Reveal Overlay Animation
-      if (overlayRef.current) {
-        gsap.to(overlayRef.current, {
-          y: "-100%",
-          ease: "power2.inOut",
-          duration: 1.2,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 95%", // Start very early as it enters
-            once: true
-          }
-        })
-      }
-
       // 2. Projects Label Animation (Snappy fade-in as it peeks from bottom)
       if (labelRef.current) {
         gsap.fromTo(labelRef.current, 
@@ -69,24 +54,33 @@ const WorkPage: React.FC = () => {
         )
       }
 
-      // 3. Project Cards Staggered Fade-in (Short and snappy)
+      // 3. Project Cards Entrance Animation (One by one as they enter view)
       const cards = containerRef.current?.querySelectorAll(`.${styles.projectCard}`)
       if (cards && cards.length > 0) {
-        gsap.fromTo(cards,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            stagger: 0.05,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 85%", // Trigger earlier as the section enters
-              toggleActions: "play none none reverse"
+        cards.forEach((card, index) => {
+          // Entrance Animation
+          gsap.fromTo(card,
+            { 
+              opacity: 0, 
+              y: 100,
+              scale: 0.9,
+              rotateX: -15
+            },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotateX: 0,
+              duration: 1.2,
+              ease: "power4.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+              }
             }
-          }
-        )
+          );
+        });
       }
     }, containerRef)
 
@@ -103,10 +97,21 @@ const WorkPage: React.FC = () => {
 
   return (
     <div ref={containerRef} className={styles.workPage}>
-      <div ref={overlayRef} className={styles.scrollOverlay} />
-
       <div ref={labelRef} className={styles.workLabel}>
-        Projects
+        <div className="relative mb-2 select-none">
+          {/* Overlay Script: MY */}
+          <span 
+            className="absolute -top-5 left-1 z-10 font-script text-[clamp(2rem,5vw,3.5rem)] text-white"
+            style={{ transform: 'rotate(-45deg)', transformOrigin: 'bottom left' }}
+          >
+            My
+          </span>
+          
+          {/* Main Display: PROJECTS */}
+          <h2 className="relative z-0 font-extenda text-[clamp(50px,6.5vw,120px)] leading-[0.8] text-[#C61212] uppercase tracking-[0.002em]">
+            Projects
+          </h2>
+        </div>
       </div>
 
       <GridLayout>

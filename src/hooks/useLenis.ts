@@ -8,9 +8,16 @@ gsap.registerPlugin(ScrollTrigger)
 function useLenis() {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.1,
+      lerp: 0.08,
       smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      normalizeWheel: true,
+      infinite: false,
     })
+
+    // Expose lenis to window for global access
+    ;(window as any).lenis = lenis
 
     lenis.on('scroll', ScrollTrigger.update)
 

@@ -7,8 +7,8 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   
-  /* Initial Larger Rectangle State */
-  padding: 14px 40px;
+  /* Initial Larger Rectangle State - Increased height by 10% */
+  padding: 16px 40px;
   border-radius: 16px;
   
   z-index: 1000;
@@ -18,10 +18,10 @@
   transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Scrolled Pill State */
+/* Scrolled Pill State - Increased height by 10% */
 .scrolled {
   top: 1rem;
-  padding: 8px 20px;
+  padding: 15px 20px;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.6);
 }
@@ -54,7 +54,8 @@
   font-size: 0.65rem;
 }
 
-.navItem:hover {
+.navItem:hover,
+.active {
   opacity: 1;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }

@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Navbar.module.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const navItems = [
-  { id: 'home', label: 'Home' },
-  { id: 'work', label: 'Work' },
-  { id: 'about', label: 'About' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'home', label: 'Home', sectionId: 'hero' },
+  { id: 'work', label: 'Work', sectionId: 'work' },
+  { id: 'about', label: 'About', sectionId: 'about-me' },
+  { id: 'contact', label: 'Contact', sectionId: 'contact' },
 ];
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,19 +32,50 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleClick = (id: string) => {
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
+    const triggers = navItems.map((item) => {
+      return ScrollTrigger.create({
+        trigger: `#${item.sectionId}`,
+        start: 'top 40%',
+        end: 'bottom 40%',
+        onToggle: (self) => {
+          if (self.isActive) setActiveSection(item.id);
+        },
+      });
+    });
+
+    return () => {
+      triggers.forEach((t) => t.kill());
+    };
+  }, [location.pathname]);
+
+  const handleClick = (sectionId: string) => {
+    const lenis = (window as any).lenis;
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
-        const element = document.getElementById(id === 'home' ? 'hero' : id);
+        const element = document.getElementById(sectionId);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          if (lenis) {
+            lenis.scrollTo(element);
+          } else {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
         }
       }, 100);
     } else {
-      const element = document.getElementById(id === 'home' ? 'hero' : id);
+      const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        if (lenis) {
+          lenis.scrollTo(element);
+        } else {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
   };
@@ -50,8 +86,8 @@ const Navbar: React.FC = () => {
         {navItems.map((item) => (
           <div
             key={item.id}
-            className={styles.navItem}
-            onClick={() => handleClick(item.id)}
+            className={`${styles.navItem} ${activeSection === item.id ? styles.active : ''}`}
+            onClick={() => handleClick(item.sectionId)}
           >
             {item.label}
           </div>

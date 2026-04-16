@@ -11,6 +11,7 @@ function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null)
   const floatOneRef = useRef<HTMLDivElement>(null)
   const floatTwoRef = useRef<HTMLDivElement>(null)
+  const textWrapperRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
     const section = sectionRef.current
@@ -82,7 +83,32 @@ function Hero() {
         '-=0.45',
       )
 
-      // 2. Wandering & Draggable Logic
+      // 2. Parallax Logic
+      // Skeletons (Foreground) - move slower than scroll for depth
+      gsap.to(".skeleton-parallax", {
+        y: -120,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      // Hero Text (Mid layer) - slight upward movement
+      gsap.to(textWrapperRef.current, {
+        y: -60,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      // 3. Wandering & Draggable Logic
       const setupSkeleton = (el: HTMLElement | null, delay = 0) => {
         if (!el) return;
 
@@ -161,35 +187,40 @@ function Hero() {
             <InteractiveSkeleton
               imageUrl={skeletonElement}
               className="h-full w-full"
-              particleDensity={0.55}
-              repelRadius={130}
-              repelStrength={85}
+              particleDensity={0.4}
+              repelRadius={120}
+              repelStrength={80}
               displayWidth={520}
             />
           </div>
         </div>
 
-        {/* 3. Floating Skeletons (Above canvas, below text) */}
-        <div 
-          ref={floatOneRef}
-          data-hero-image
-          className="absolute top-0 left-0 z-20 pointer-events-auto opacity-[0.5] cursor-grab"
-          style={{ transform: 'scale(0.5)', transformOrigin: 'center center' }}
-        >
-          <img src={skeletonElement} alt="" className="w-[30vw] h-auto select-none pointer-events-none" />
-        </div>
+        {/* 3. Floating Skeletons Wrapper for Parallax (Above canvas, below text) */}
+        <div className="skeleton-parallax absolute inset-0 pointer-events-none z-20">
+          <div 
+            ref={floatOneRef}
+            data-hero-image
+            className="absolute top-0 left-0 pointer-events-auto opacity-[0.5] cursor-grab"
+            style={{ transform: 'scale(0.5)', transformOrigin: 'center center' }}
+          >
+            <img src={skeletonElement} alt="" className="w-[30vw] h-auto select-none pointer-events-none" />
+          </div>
 
-        <div 
-          ref={floatTwoRef}
-          data-hero-image
-          className="absolute top-0 left-0 z-20 pointer-events-auto opacity-[0.5] cursor-grab"
-          style={{ transform: 'scale(0.5)', transformOrigin: 'center center' }}
-        >
-          <img src={skeletonElement} alt="" className="w-[30vw] h-auto select-none pointer-events-none" />
+          <div 
+            ref={floatTwoRef}
+            data-hero-image
+            className="absolute top-0 left-0 pointer-events-auto opacity-[0.5] cursor-grab"
+            style={{ transform: 'scale(0.5)', transformOrigin: 'center center' }}
+          >
+            <img src={skeletonElement} alt="" className="w-[30vw] h-auto select-none pointer-events-none" />
+          </div>
         </div>
 
         {/* 4. Hero Text Container (Topmost Hero Layer) */}
-        <div className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center pointer-events-none">
+        <div 
+          ref={textWrapperRef}
+          className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center pointer-events-none"
+        >
           <div className="flex flex-col items-center translate-y-[-2vh] pointer-events-none">
             <p
               data-hero-intro

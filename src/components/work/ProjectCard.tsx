@@ -43,7 +43,7 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           onEnded={() => {
             if (videoRef.current) {
               videoRef.current.currentTime = 0;

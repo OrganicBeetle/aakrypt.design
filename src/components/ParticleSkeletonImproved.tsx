@@ -1,6 +1,7 @@
 import { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
+import { useInView } from 'framer-motion';
 
 interface ParticleData {
   restPosition: THREE.Vector3;
@@ -197,6 +198,10 @@ function ParticleSystem({
 
     const time = state.clock.getElapsedTime();
 
+    const isHovering = isHoveringRef.current;
+    const mx = intersectPoint.x;
+    const my = intersectPoint.y;
+
     particlesDataRef.current.forEach((particle, i) => {
       const i3 = i * 3;
 
@@ -205,23 +210,21 @@ function ParticleSystem({
       const jitterX = Math.sin(time * 1.8 + particle.jitterSeed) * jitterAmount;
       const jitterY = Math.cos(time * 1.3 + particle.jitterSeed) * jitterAmount;
 
-      if (isHoveringRef.current) {
+      if (isHovering) {
         // Calculate distance to mouse
-        const dx = particle.currentPosition.x - intersectPoint.x;
-        const dy = particle.currentPosition.y - intersectPoint.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        const dx = particle.currentPosition.x - mx;
+        const dy = particle.currentPosition.y - my;
+        const distSq = dx * dx + dy * dy;
 
         // Only affect particles within cursor radius
-        if (distance < repelRadius) {
+        if (distSq < repelRadius * repelRadius) {
+          const distance = Math.sqrt(distSq);
           // Stronger repulsion when closer to cursor
-          const force = Math.pow(1 - distance / repelRadius, 2) * repelStrength;
+          const force = (1 - distance / repelRadius) * repelStrength * 0.15;
           const angle = Math.atan2(dy, dx);
 
-          // Add random scatter for "globule" effect
-          const scatter = (Math.random() - 0.5) * 0.3;
-
-          particle.velocity.x += Math.cos(angle + scatter) * force * 0.15;
-          particle.velocity.y += Math.sin(angle + scatter) * force * 0.15;
+          particle.velocity.x += Math.cos(angle) * force;
+          particle.velocity.y += Math.sin(angle) * force;
         }
       }
 
@@ -284,11 +287,15 @@ function ParticleSystem({
 }
 
 export function ParticleSkeleton(props: ParticleSkeletonProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { margin: "200px" });
+
   return (
-    <div className="absolute inset-0 pointer-events-auto">
+    <div ref={containerRef} className="absolute inset-0 pointer-events-auto">
       <Canvas
+        frameloop={isInView ? 'always' : 'demand'}
         camera={{ position: [0, 0, 600], fov: 45 }}
-        gl={{ alpha: true, antialias: true, preserveDrawingBuffer: false }}
+        gl={{ alpha: true, antialias: false, preserveDrawingBuffer: false, powerPreference: "high-performance" }}
         style={{ background: 'transparent' }}
       >
         <ParticleSystem {...props} />

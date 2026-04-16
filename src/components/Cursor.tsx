@@ -11,10 +11,10 @@ function Cursor() {
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
 
-  const dotX = useSpring(cursorX, { damping: 30, stiffness: 700, mass: 0.2 })
-  const dotY = useSpring(cursorY, { damping: 30, stiffness: 700, mass: 0.2 })
-  const ringX = useSpring(cursorX, { damping: 24, stiffness: 220, mass: 0.8 })
-  const ringY = useSpring(cursorY, { damping: 24, stiffness: 220, mass: 0.8 })
+  const dotX = useSpring(cursorX, { damping: 20, stiffness: 1000, mass: 0.1 })
+  const dotY = useSpring(cursorY, { damping: 20, stiffness: 1000, mass: 0.1 })
+  const ringX = useSpring(cursorX, { damping: 30, stiffness: 400, mass: 0.5 })
+  const ringY = useSpring(cursorY, { damping: 30, stiffness: 400, mass: 0.5 })
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(pointer: fine)')
@@ -26,7 +26,10 @@ function Cursor() {
     const handleMouseMove = (event: MouseEvent) => {
       cursorX.set(event.clientX)
       cursorY.set(event.clientY)
-      setIsVisible(true)
+      setIsVisible(prev => {
+        if (!prev) return true;
+        return prev;
+      });
     }
 
     const handlePointerOver = (event: MouseEvent) => {

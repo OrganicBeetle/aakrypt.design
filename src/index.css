@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@400;500;600&family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&family=Oswald:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -49,7 +49,7 @@
   :root {
     color: #2c353c;
     background-color: #f1f0ee;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Mono', monospace;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -83,31 +83,29 @@
     font-family: 'Anton', sans-serif;
     font-size: 10vw;
     line-height: 1;
-
-    /* Background clip for text texture */
     background-image: url('./assets/Portfolio-bg-texture.jpeg');
     background-size: cover;
     background-position: center;
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent; /* Allows texture to show through */
-
+    color: transparent;
     -webkit-text-stroke: 1.5px rgba(10, 10, 10, 0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* Removed backdrop-filter to prevent scroll jitter */
     pointer-events: none;
     z-index: 5;
     letter-spacing: 0.05em;
     white-space: nowrap;
     user-select: none;
-    opacity: 0.65; /* Increased opacity slightly to see the texture better */
-
+    opacity: 0.65;
     text-shadow: 
-      0 10px 20px rgba(0,0,0,0.1),
-      0 6px 6px rgba(0,0,0,0.1);
-    transition: all 0.8s ease;
+      0 5px 10px rgba(0,0,0,0.05); /* Lighter shadow */
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
   }
 
+  .parallax-character, .parallax-circle, .skeleton-parallax, .work-card {
+    will-change: transform;
+  }
 
   @media (max-width: 1400px) {
     .portfolio-side-text {
@@ -140,47 +138,53 @@
     min-height: 100vh;
     margin: 0;
     background-color: #f1f0ee;
-    background-image: 
-      linear-gradient(rgba(241, 240, 238, 0.85), rgba(241, 240, 238, 0.85)),
-      url('./assets/Portfolio-bg-texture.jpeg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     color: #2c353c;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Mono', monospace;
     cursor: none;
     overflow-x: hidden;
-    
-    /* Firefox scrollbar styles */
     scrollbar-width: thin;
     scrollbar-color: rgba(10, 10, 10, 0.7) transparent;
   }
 
-  /* Dark Mode Scrollbar (White scroller on Black track) */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: 
+      linear-gradient(rgba(241, 240, 238, 0.85), rgba(241, 240, 238, 0.85)),
+      url('./assets/Portfolio-bg-texture.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0a0a0a; /* Solid deep black track */
+    background: #0a0a0a;
     border-radius: 0;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.4); /* Translucent white thumb */
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 3px solid #0a0a0a; /* Match track for inset effect */
+    background: rgba(255, 255, 255, 0.4);
+    border: 3px solid #0a0a0a;
     background-clip: padding-box;
     border-radius: 100px;
     transition: all 0.3s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.85); /* Bright white on hover */
+    background: rgba(255, 255, 255, 0.85);
   }
 
-  /* Firefox dark mode support */
   * {
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.4) #0a0a0a;
@@ -190,27 +194,15 @@
     min-height: 100vh;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-family: 'Oswald', 'Arial Narrow', sans-serif;
     font-weight: 500;
     letter-spacing: 0.02em;
   }
 
-  p,
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  li,
-  span {
-    font-family: 'Cormorant Garamond', sans-serif;
+  p, a, button, input, textarea, select, li, span {
+    font-family: 'Space Mono', monospace;
   }
 
   @media (pointer: coarse) {
@@ -220,17 +212,7 @@
   }
 }
 
-.hero-line .char {
-  display: inline-block;
-  will-change: transform, opacity;
-}
-
-.about-heading .word {
-  display: inline-block;
-  will-change: transform, opacity;
-}
-
-.skills-quote .word {
+.hero-line .char, .about-heading .word, .skills-quote .word {
   display: inline-block;
   will-change: transform, opacity;
 }
@@ -244,39 +226,23 @@
   transform: translateY(-8px);
 }
 
-.nav-link::after {
+.nav-link::after, .contact-link::after {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 1px;
-  background-color: #2c353c;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.35s ease;
 }
 
-.nav-link:hover::after,
-.nav-link:focus-visible::after {
-  transform: scaleX(1);
-}
+.nav-link::after { background-color: #2c353c; }
+.contact-link::after { background-color: #bcc9cc; }
 
-.contact-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #bcc9cc;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.35s ease;
-}
-
-.contact-link:hover::after,
-.contact-link:focus-visible::after {
+.nav-link:hover::after, .nav-link:focus-visible::after,
+.contact-link:hover::after, .contact-link:focus-visible::after {
   transform: scaleX(1);
 }
 
@@ -287,13 +253,7 @@
 .paper-surface {
   background-image:
     linear-gradient(0deg, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.56)),
-    repeating-linear-gradient(
-      0deg,
-      rgba(44, 53, 60, 0.012) 0,
-      rgba(44, 53, 60, 0.012) 1px,
-      transparent 1px,
-      transparent 5px
-    ),
+    repeating-linear-gradient(0deg, rgba(44, 53, 60, 0.012) 0, rgba(44, 53, 60, 0.012) 1px, transparent 1px, transparent 5px),
     var(--paper-texture);
 }
 
@@ -307,22 +267,8 @@
 }
 
 @keyframes hero-scroll {
-  0% {
-    transform: translate(-50%, 0);
-    opacity: 0;
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  80% {
-    transform: translate(-50%, 52px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate(-50%, 52px);
-    opacity: 0;
-  }
+  0% { transform: translate(-50%, 0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { transform: translate(-50%, 52px); opacity: 1; }
+  100% { transform: translate(-50%, 52px); opacity: 0; }
 }

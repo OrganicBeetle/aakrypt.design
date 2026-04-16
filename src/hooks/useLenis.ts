@@ -12,7 +12,6 @@ function useLenis() {
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 2,
-      normalizeWheel: true,
       infinite: false,
     })
 

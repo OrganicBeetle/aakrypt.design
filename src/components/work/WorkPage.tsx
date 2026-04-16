@@ -57,7 +57,7 @@ const WorkPage: React.FC = () => {
       // 3. Project Cards Entrance Animation (One by one as they enter view)
       const cards = containerRef.current?.querySelectorAll(`.${styles.projectCard}`)
       if (cards && cards.length > 0) {
-        cards.forEach((card, index) => {
+        cards.forEach((card) => {
           // Entrance Animation
           gsap.fromTo(card,
             { 

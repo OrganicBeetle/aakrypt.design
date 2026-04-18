@@ -3,6 +3,7 @@ import Hero from '../sections/Hero'
 import Work from '../sections/Work'
 import CollageWheel from '../components/CollageWheel'
 import AboutMe from '../sections/AboutMe'
+import Skills from '../sections/Skills'
 import { useEffect } from 'react'
 
 function HomePage() {
@@ -19,6 +20,7 @@ function HomePage() {
       <CollageWheel />
       <Work />
       <AboutMe />
+      <Skills />
       <Contact />
     </main>
   )

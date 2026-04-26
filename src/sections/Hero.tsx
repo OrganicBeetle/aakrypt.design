@@ -1,7 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { Draggable } from 'gsap/all'
-import heroBackground from '../assets/Landing Page/landing_page.png'
 import skeletonElement from '../assets/skeleton-bgremoved.png'
 import InteractiveSkeleton from '../components/InteractiveSkeleton'
 
@@ -167,16 +166,8 @@ function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative isolate min-h-screen overflow-hidden bg-paper text-charcoal"
+      className="relative isolate min-h-screen overflow-hidden text-chalk"
     >
-      {/* 1. Background (Lowest) */}
-      <img
-        src={heroBackground}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center z-0"
-      />
-      
       <div className="relative z-10 min-h-screen w-full">
         {/* 2. Interactive Canvas (Behind skeletons and text) */}
         <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-auto">

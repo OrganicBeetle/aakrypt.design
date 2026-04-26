@@ -18,17 +18,16 @@ import digicrow from '../assets/image-wheel/digi crow.png';
 import puppet from '../assets/image-wheel/puppet.png';
 import eye from '../assets/image-wheel/eye.png';
 import printBodice from '../assets/image-wheel/print bodice jpeg.png';
-import philosophyBg from '../assets/DesignPhilosophy/landing_page.png';
 import cowUdder from '../assets/DesignPhilosophy/cow udder white.png';
 import circleDecor from '../assets/DesignPhilosophy/circle.png';
 
 const images = [
   { src: printBodice, scale: 1, z: 4 },
-  { src: booklet, scale: 1.5, z: 3 },
+  { src: booklet, scale: 1, z: 3 },
   { src: stamp, scale: 0.9, z: 2 },
-  { src: collage, scale: 1, z: 4 },
-  { src: skellyHand, scale: 1, z: 3 },
-  { src: cellophane, scale: 2.25, z: 3 },
+  { src: collage, scale: 0.75, z: 4 },
+  { src: skellyHand, scale: 0.65, z: 3 },
+  { src: cellophane, scale: 2.25, z: 1},
   { src: brain, scale: 1, z: 2 },
   { src: starryNight, scale: 1.1, z: 3 },
   { src: digicrow, scale: 0.95, z: 2 },
@@ -37,7 +36,7 @@ const images = [
 ];
 
 const CollageWheel = () => {
-  const RADIUS = 380; // Constant radius for authentic wheel feeling
+  const RADIUS = 140; // Constant radius for authentic wheel feeling
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {
@@ -128,22 +127,12 @@ const CollageWheel = () => {
     <section 
       ref={sectionRef}
       id="about" 
-      className="relative flex h-screen w-full items-center overflow-hidden"
+      className="relative my-[6vh] flex min-h-[130vh] w-full items-center overflow-visible py-[10vh]"
     >
-      {/* Background Image */}
-      <img
-        src={philosophyBg}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover object-center"
-        aria-hidden="true"
-      />
-      
-      <div className="absolute inset-0 pointer-events-none" />
-
       {/* Left Content Area */}
       <div className="relative z-20 w-1/2 px-12 lg:px-24">
         {/* Background Decorative Character (Behind text block) */}
-        <div className="absolute left-[40%] top-4/5 -translate-y-1/2 -z-10 pointer-events-none select-none">
+        <div className="absolute left-[50%] top-[45%] -translate-y-1/2 -z-10 pointer-events-none select-none">
           <img 
             src={cowUdder} 
             alt="" 
@@ -177,7 +166,7 @@ const CollageWheel = () => {
               <img 
                 src={circleDecor} 
                 alt="" 
-                className="parallax-circle absolute -top-[4vh] left-[5vw] -translate-x-1/2 -translate-y-1/2 w-[150%] max-w-none scale-[1.1] opacity-[0.9] -z-10" 
+                className="parallax-circle absolute -top-[4.5vh] left-[5vw] -translate-x-1/2 -translate-y-1/2 w-[150%] max-w-none scale-[1.1] opacity-[0.9] -z-10" 
                 style={{ transform: 'translate(-50%, -50%) rotate(3deg)' }}
               />
               <span className='font-mono'>characters.</span>
@@ -188,7 +177,7 @@ const CollageWheel = () => {
 
       {/* The Rotating Collage Wheel Container */}
       <div 
-        className="absolute right-0 top-1/2 h-[1200px] w-[1200px] -translate-y-1/2 translate-x-1/2"
+        className="absolute right-[10px] top-1/2 h-[1080px] w-[1080px] -translate-y-1/2 translate-x-1/2"
         style={{ perspective: '1500px' }}
       >
         <motion.div
@@ -226,7 +215,7 @@ const CollageWheel = () => {
                   backfaceVisibility: "hidden"
                 }}
               >
-                <div className="relative group">
+                <div className="relative group -translate-x-1/2 -translate-y-1/2">
                   <motion.img
                     src={img.src}
                     alt=""

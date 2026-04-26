@@ -67,7 +67,7 @@ function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-ink px-6 py-20 text-chalk sm:px-10 sm:py-24 lg:px-14 lg:py-32"
+      className="relative flex min-h-screen flex-col justify-between overflow-hidden px-6 py-20 text-chalk sm:px-10 sm:py-24 lg:px-14 lg:py-32"
     >
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
         <span className="font-heading text-[22vw] font-light leading-none text-[#111111] sm:text-[20vw] lg:text-[18vw]">

@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import skillsBackground from '../assets/SkillsPage/SkillsBackgroud.png';
 import notebookAsset from '../assets/SkillsPage/Notebook.png';
 import evidenceBagAsset from '../assets/SkillsPage/evidence_bag.png';
 import envelopeAsset from '../assets/SkillsPage/envelope.png';
@@ -44,17 +43,9 @@ const Skills: React.FC = () => {
     <section 
       ref={sectionRef}
       id="skills"
-      className="relative h-screen w-full overflow-hidden bg-paper"
+      className="relative h-screen min-h-screen w-full overflow-hidden"
       style={{ isolation: 'isolate' }}
     >
-      {/* 1. Base Textured Background Layer */}
-      <img
-        src={skillsBackground}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 w-full h-full z-0"
-      />
-
       {/* 2. Main Content Container */}
       <div ref={containerRef} className="relative z-30 h-full w-full">
         

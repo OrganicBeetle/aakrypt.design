@@ -10,7 +10,7 @@ import styles from './Work.module.css'
 gsap.registerPlugin(ScrollTrigger)
 
 const projects: ProjectData[] = [
-  { title: "bag", video: "/videos/bag.mp4", pdf: "/pdfs/bag.pdf", index: "01/07", gridClass: "bag" },
+  { title: "bag", video: "/videos/bag.mp4", pdf: "https://drive.google.com/file/d/1x4EcWRPvyVobNbm9s7n-SH9QE5Fib2W8/preview", index: "01/07", gridClass: "bag" },
   { 
     title: "Etched: Denim", 
     video: "/videos/denim.mp4", 

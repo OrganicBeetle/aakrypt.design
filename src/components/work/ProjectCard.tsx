@@ -30,6 +30,7 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
   return (
     <div
       className={`${styles.projectCard} ${styles[project.gridClass]}`}
+      data-cursor="CARD"
       onClick={() => onClick(project)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

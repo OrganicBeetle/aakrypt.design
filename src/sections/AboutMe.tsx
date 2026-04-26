@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import heroBackground from '../assets/Landing Page/landing_page.png';
 import notepadImg from '../assets/About Me/notepad.png';
 import photoPaperImg from '../assets/About Me/photo paper.png';
 import circleDecor from '../assets/DesignPhilosophy/circle.png';
@@ -57,16 +56,8 @@ const AboutMe: React.FC = () => {
     <section 
       ref={sectionRef}
       id="about-me"
-      className="relative min-h-screen w-full flex flex-col lg:flex-row overflow-hidden bg-paper"
+      className="relative min-h-screen w-full flex flex-col lg:flex-row overflow-hidden"
     >
-      {/* 1. Background Layer */}
-      <img
-        src={heroBackground}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center z-0"
-      />
-
       <div className="relative z-10 w-full h-full flex flex-col lg:flex-row px-[5vw] lg:px-[8vw] py-[6vh] lg:py-[8vh]">
         
         {/* 2. Left Side: Photo Paper (Top) & Heading (Bottom) */}

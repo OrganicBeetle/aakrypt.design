@@ -4,7 +4,7 @@ function WorkDetailPage() {
   const { id } = useParams()
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-ink px-6 py-24 text-chalk sm:px-10 lg:px-14">
+    <main className="flex min-h-screen items-center justify-center px-6 py-24 text-chalk sm:px-10 lg:px-14">
       <div className="text-center">
         <p className="text-[11px] uppercase tracking-[0.3em] text-accent">
           WORK DETAIL

@@ -15,7 +15,7 @@ function HomePage() {
   }, [])
 
   return (
-    <main className="bg-paper text-charcoal" aria-label="Portfolio app shell">
+    <main className="text-chalk" aria-label="Portfolio app shell">
       <Hero />
       <CollageWheel />
       <Work />

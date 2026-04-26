@@ -47,23 +47,18 @@
 
 @layer base {
   :root {
-    color: #2c353c;
-    background-color: #f1f0ee;
+    color: #f5f0eb;
+    background-color: #2c353c;
     font-family: 'Space Mono', monospace;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    --color-paper: #f1f0ee;
+    --color-paper: transparent;
     --color-charcoal: #2c353c;
     --color-stone: #afb3b6;
     --color-powder: #bcc9cc;
-    --paper-texture:
-      radial-gradient(circle at 8% 24%, rgba(44, 53, 60, 0.07), transparent 0 11%),
-      radial-gradient(circle at 91% 28%, rgba(44, 53, 60, 0.05), transparent 0 10%),
-      radial-gradient(circle at 18% 78%, rgba(44, 53, 60, 0.04), transparent 0 9%),
-      radial-gradient(circle at 73% 84%, rgba(44, 53, 60, 0.035), transparent 0 8%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 240, 238, 0.98));
+    --paper-texture: none;
   }
 
   *:not(.modal-open, .modal-open *) {
@@ -130,38 +125,25 @@
 
   html {
     min-height: 100%;
-    background-color: #f1f0ee;
+    background-color: #2c353c;
     overflow-x: hidden;
   }
 
   body {
     min-height: 100vh;
     margin: 0;
-    background-color: #f1f0ee;
-    color: #2c353c;
+    background-color: #2c353c;
+    background-image: url('./assets/Landing Page/landing_page.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f5f0eb;
     font-family: 'Space Mono', monospace;
     cursor: none;
     overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: rgba(10, 10, 10, 0.7) transparent;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: 
-      linear-gradient(rgba(241, 240, 238, 0.85), rgba(241, 240, 238, 0.85)),
-      url('./assets/Portfolio-bg-texture.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: -1;
-    pointer-events: none;
-    will-change: transform;
   }
 
   ::-webkit-scrollbar {
@@ -191,6 +173,17 @@
   }
 
   #root {
+    min-height: 100vh;
+    background: transparent;
+  }
+
+  main,
+  section {
+    margin: 0;
+    background: transparent;
+  }
+
+  section {
     min-height: 100vh;
   }
 

@@ -34,7 +34,7 @@ function Cursor() {
 
     const handlePointerOver = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null
-      const interactiveTarget = target?.closest<HTMLElement>('a, button')
+      const interactiveTarget = target?.closest<HTMLElement>('a, button, [data-cursor]')
       const cursorTarget = target?.closest<HTMLElement>('[data-cursor]')
 
       setIsInteractive(Boolean(interactiveTarget))
@@ -43,7 +43,7 @@ function Cursor() {
 
     const handlePointerOut = (event: MouseEvent) => {
       const relatedTarget = event.relatedTarget as HTMLElement | null
-      const nextInteractive = relatedTarget?.closest<HTMLElement>('a, button')
+      const nextInteractive = relatedTarget?.closest<HTMLElement>('a, button, [data-cursor]')
       const nextCursorTarget = relatedTarget?.closest<HTMLElement>('[data-cursor]')
 
       if (!nextInteractive) {
@@ -92,16 +92,16 @@ function Cursor() {
     return null
   }
 
-  const isLabeled = cursorLabel.length > 0
+  const isCardHover = cursorLabel === 'CARD'
   const isNavHover = cursorLabel === 'NAV'
 
   return (
     <>
       <motion.div
-        className="custom-cursor pointer-events-none fixed left-0 top-0 z-[9999] rounded-full"
+        className="custom-cursor pointer-events-none fixed left-0 top-0 z-[9999] flex items-center justify-center rounded-full"
         style={{
-          x: dotX,
-          y: dotY,
+          x: isCardHover ? ringX : dotX,
+          y: isCardHover ? ringY : dotY,
           width: 12,
           height: 12,
           marginLeft: -6,
@@ -109,12 +109,25 @@ function Cursor() {
         }}
         initial={false}
         animate={{
-          scale: isNavHover ? 0.4 : isLabeled ? 0.6 : isInteractive ? 2.5 : 1,
+          scale: isCardHover ? (isClicked ? 4 : 4.5) : isNavHover ? 0.4 : isClicked ? 0.75 : 1,
           opacity: isVisible ? (isNavHover ? 0.3 : 1) : 0,
           backgroundColor: isClicked ? '#bcc9cc' : '#2c353c',
+          borderColor: 'rgba(44, 53, 60, 0.55)',
         }}
-        transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-      />
+        transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <motion.span
+          className="select-none text-[2px] font-medium uppercase leading-none tracking-[0.08em] text-white"
+          initial={false}
+          animate={{
+            opacity: isCardHover ? 1 : 0,
+            scale: isCardHover ? 1 : 0.8,
+          }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
+        >
+          VIEW
+        </motion.span>
+      </motion.div>
       <motion.div
         className="custom-cursor pointer-events-none fixed left-0 top-0 z-[9998] rounded-full border border-charcoal/70"
         style={{
@@ -127,26 +140,18 @@ function Cursor() {
         }}
         initial={false}
         animate={{
-          scale: isNavHover ? 0.8 : isLabeled ? 1.8 : isInteractive ? 0.65 : 1,
+          scale: isNavHover ? 0.8 : isCardHover ? 0.2 : isInteractive ? 0.65 : 1,
           opacity: isVisible 
             ? isNavHover 
               ? 0.15 
-              : (isInteractive || isLabeled ? 0.9 : 0.4) 
+              : (isCardHover ? 0 : isInteractive ? 0.45 : 0.4) 
             : 0,
           backgroundColor: isInteractive
-            ? isLabeled && !isNavHover
-              ? 'rgba(44, 53, 60, 0.16)'
-              : 'rgba(188, 201, 204, 0.24)'
+            ? 'rgba(188, 201, 204, 0.24)'
             : 'rgba(44, 53, 60, 0)',
         }}
         transition={{ type: 'spring', stiffness: 260, damping: 26 }}
-      >
-        {!isNavHover && (
-          <span className="flex h-full w-full items-center justify-center text-[10px] uppercase tracking-[0.22em] text-charcoal">
-            {cursorLabel}
-          </span>
-        )}
-      </motion.div>
+      />
     </>
   )
 }

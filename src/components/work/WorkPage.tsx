@@ -10,23 +10,21 @@ import styles from './Work.module.css'
 gsap.registerPlugin(ScrollTrigger)
 
 const projects: ProjectData[] = [
-  { title: "bag", video: "/videos/bag.mp4", pdf: "/pdfs/bag.pdf", index: "01/09", gridClass: "bag" },
-  { title: "illustrations", video: "/videos/illustrations.mp4", pdf: "/pdfs/illustrations.pdf", index: "02/09", gridClass: "illustrations" },
+  { title: "bag", video: "/videos/bag.mp4", pdf: "/pdfs/bag.pdf", index: "01/07", gridClass: "bag" },
   { 
     title: "Etched: Denim", 
     video: "/videos/denim.mp4", 
     poster: "/poster/denim_thumbnail.png",
-    pdf: "https://drive.google.com/file/d/1bbR_sK_xz3qWEG45knMkvN1t-KDwrK0Y/preview", 
-    index: "03/09", 
+    pdf: "https://drive.google.com/file/d/1RpQKN-UK4SeZd_Ug7MIZ78hwO4sVOBGb/preview", 
+    index: "02/07", 
     gridClass: "denim" 
   },
 
-  { title: "shirt", video: "/videos/shirt.mp4", pdf: "/pdfs/shirt.pdf", index: "04/09", gridClass: "shirt" },
-  { title: "transform ii", video: "/videos/transform_ii.mp4", pdf: "/pdfs/transform_ii.pdf", index: "05/09", gridClass: "transform_ii" },
-  { title: "transform i", video: "/videos/transform_i.mp4", pdf: "/pdfs/transform_i.pdf", index: "06/09", gridClass: "transform_i" },
-  { title: "jacket", video: "/videos/jacket.mp4", pdf: "/pdfs/jacket.pdf", index: "07/09", gridClass: "jacket" },
-  { title: "craft", video: "/videos/craft.mp4", pdf: "/pdfs/craft.pdf", index: "08/09", gridClass: "craft" },
-  { title: "digital work", video: "/videos/digital_work.mp4", pdf: "/pdfs/digital_work.pdf", index: "09/09", gridClass: "digital_work" },
+  { title: "shirt", video: "/videos/shirt.mp4", pdf: "/pdfs/shirt.pdf", index: "03/07", gridClass: "shirt" },
+  { title: "transform ii", video: "/videos/transform_ii.mp4", pdf: "https://drive.google.com/file/d/1c1Od0CogjhFFXSZBDEgubbSF2xhUohT6/preview", index: "04/07", gridClass: "transform_ii" },
+  { title: "jacket", video: "/videos/jacket.mp4", pdf: "https://drive.google.com/file/d/1q_HKSiQ0vWvMNmsulMtwd71xdT_bVR8t/preview", index: "05/07", gridClass: "jacket" },
+  { title: "craft", video: "/videos/craft.mp4", pdf: "https://drive.google.com/file/d/11sZ2VIc9idH9w6I8znFmNvagyAXRTg5f/preview", index: "06/07", gridClass: "craft" },
+  { title: "digital work", video: "/videos/digital_work.mp4", pdf: "/pdfs/digital_work.pdf", index: "07/07", gridClass: "digital_work" },
 ]
 
 const WorkPage: React.FC = () => {

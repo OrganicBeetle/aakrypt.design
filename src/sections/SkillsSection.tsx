@@ -62,6 +62,32 @@ function SkillsSection() {
         outline: 'none'
       }}
     >
+      {/* Page Heading */}
+      <div className="absolute top-[8vh] right-[3vw] z-20 select-none pointer-events-none">
+        <div className="relative inline-flex flex-col items-end">
+          <motion.span 
+            initial={{ opacity: 0, x: -20, rotate: -15 }}
+            whileInView={{ opacity: 1, x: 0, rotate: -12 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="font-script text-[clamp(1.5rem,3.5vw,2.8rem)] text-chalk absolute top-[5.75rem] left-[25%] -ml-[25%] whitespace-nowrap z-10 transform"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.2)' }}
+          >
+            My
+          </motion.span>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="font-anton text-[clamp(4rem,8vw,8rem)] leading-[0.8] uppercase tracking-tighter text-[#c61212] z-0 top-[5.75rem] mt-[8rem] -left-[8rem]"
+          >
+            Skills
+          </motion.h2>
+        </div>
+      </div>
+
       <div className="relative flex min-h-[120vh] w-full items-center justify-center" style={{ background: 'none' }}>
         <div className="relative flex w-full max-w-7xl flex-col items-center justify-center gap-12 sm:flex-row sm:gap-8 lg:gap-16">
           {cards.map((card, index) => (

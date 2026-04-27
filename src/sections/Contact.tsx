@@ -1,15 +1,25 @@
-import React, { useRef } from 'react'
-import { motion, useMotionValue, useSpring, useTransform, type Variants } from 'framer-motion'
+import React, { useRef, useState } from 'react'
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, type Variants } from 'framer-motion'
 import characterImg from '../assets/ContactMe/Character.png'
 
 const Contact = () => {
+  const [copyStatus, setCopyStatus] = useState(false)
+  const phoneNumber = '7683900870'
+
   const links = [
-    { label: 'Email', href: 'mailto:aakrypt.design@gmail.com' },
-    { label: 'Contact', href: 'tel:7683900870' },
+    { label: 'Email', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=aakrypt.design@gmail.com' },
+    { label: 'Contact', href: `tel:${phoneNumber}`, isPhone: true },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aakarshita-sharma-design' },
-    { label: 'Resume', href: '/pdf/Etched_Denim Portfolio.pdf' },
+    { label: 'Resume', href: 'https://drive.google.com/file/d/1iS4okAb4rmtC6_KRhnsjwHUHZl2TO9G_/preview' },
     { label: 'Instagram', href: 'https://www.instagram.com/aakrypt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
   ]
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    navigator.clipboard.writeText(phoneNumber)
+    setCopyStatus(true)
+    setTimeout(() => setCopyStatus(false), 4000)
+  }
 
   const sectionRef = useRef<HTMLElement>(null)
   
@@ -69,8 +79,8 @@ const Contact = () => {
       style={{ background: 'transparent', backgroundColor: 'transparent', boxShadow: 'none', backdropFilter: 'none' }}
     >
       {/* Left Section (~60%) */}
-      <div className="relative z-10 flex h-full w-[60%] flex-col justify-center items-center px-12 lg:px-24 text-center">
-        <div className="relative flex flex-col items-center">
+      <div className="relative z-10 flex h-full w-[60%] flex-col justify-center items-center px-12 lg:px-24 text-center -mt-[15vh]">
+        <div className="relative flex flex-col items-center justify-center gap-1 lg:gap-2">
           <motion.h2
             variants={containerVariants}
             initial="hidden"
@@ -95,37 +105,74 @@ const Contact = () => {
                 delay: 1.4,
                 ease: [0.4, 0, 0.2, 1],
               }}
-              className="font-script -mt-[2vw] text-[3vw] leading-tight text-chalk lg:text-[2.25vw]"
+              className="font-homemade text-[3vw] leading-tight text-chalk lg:text-[3.25vw] -mt-8"
             >
               about working together, or your favorite tarot card
             </motion.p>
           </div>
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.8, delay: 2.8 }}
-          className="mt-16 flex w-full max-w-2xl items-center justify-between font-mono text-[15px] tracking-[0.2em] text-chalk sm:text-[17px]"
-        >
-          {links.map((link, index) => (
-            <React.Fragment key={link.label}>
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative py-1 opacity-70 transition-all duration-300 hover:opacity-100"
-              >
-                {link.label.toUpperCase()}
-                <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-chalk transition-all duration-300 group-hover:w-full" />
-              </a>
-              {index < links.length - 1 && (
-                <span className="mx-2 opacity-30 text-stone">|</span>
-              )}
-            </React.Fragment>
-          ))}
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8, delay: 2.8 }}
+            className="flex w-full max-w-2xl items-center justify-between font-mono text-[15px] tracking-[0.2em] text-chalk sm:text-[17px] mt-4 lg:mt-6"
+          >
+            {links.map((link, index) => (
+              <React.Fragment key={link.label}>
+                <div className="relative group">
+                  {link.isPhone ? (
+                    <button
+                      onClick={handleContactClick}
+                      className="relative py-1 opacity-70 transition-all duration-300 hover:opacity-100 uppercase cursor-pointer"
+                    >
+                      {link.label}
+                      <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-chalk transition-all duration-300 group-hover:w-full" />
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative py-1 opacity-70 transition-all duration-300 hover:opacity-100 uppercase"
+                    >
+                      {link.label}
+                      <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-chalk transition-all duration-300 group-hover:w-full" />
+                    </a>
+                  )}
+
+                  <AnimatePresence>
+                    {link.isPhone && copyStatus && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, x: '-50%' }}
+                        animate={{ opacity: 1, y: -45, x: '-50%' }}
+                        exit={{ opacity: 0, y: 0, x: '-50%' }}
+                        className="absolute left-1/2 z-50 flex items-center gap-3 rounded-lg bg-black px-4 py-2 text-[12px] font-bold tracking-normal text-white shadow-2xl whitespace-nowrap"
+                      >
+                        <span className="flex items-center gap-2">
+                          <svg className="h-3 w-3 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                          </svg>
+                          Number copied
+                        </span>
+                        <div className="h-3 w-[1px] bg-white/20" />
+                        <a 
+                          href={`tel:${phoneNumber}`}
+                          className="text-[#ff4d4d] transition-colors hover:text-red-400 underline underline-offset-2"
+                        >
+                          Call Now
+                        </a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+                {index < links.length - 1 && (
+                  <span className="mx-2 opacity-30 text-stone">|</span>
+                )}
+              </React.Fragment>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       {/* Right Section (~40%) */}

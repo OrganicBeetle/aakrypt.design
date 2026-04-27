@@ -138,9 +138,9 @@ const AboutMe: React.FC = () => {
             
             {/* Content area inside notepad */}
             <div 
-              className="absolute inset-0 p-[12%] pt-[18%] lg:pt-[15%] flex flex-col items-start justify-start text-left text-black font-homemade leading-[1.4] overflow-y-auto mt-[15vh]"
+              className="absolute inset-0 p-[12%] pt-[18%] lg:pt-[15%] pb-[15%] flex flex-col items-start justify-between text-left text-black font-homemade leading-[1.4] overflow-y-auto mt-[13vh] max-h-[65%]"
             >
-              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)] -mb-2">
+              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)]">
                 Hi! I am Aakarshita,
                 <span className="relative inline-block mx-1 px-[0.3rem] font-homemade">
                   <span className="relative z-10 font-homemade text-white">a year III fashion design student</span>
@@ -152,20 +152,20 @@ const AboutMe: React.FC = () => {
                 at Indian Institute of Art & Design Delhi.
               </p>
               
-              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)] mb-2">
+              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)]">
                 My work is submerged in a universe that I created, with each project manifesting itself into a 
                 <span className="relative inline-block px-1 mx-1 font-homemade">
                   persona.
                   <img 
                     src={circleDecor} 
                     alt="" 
-                    className="about-circle-decor absolute -top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] max-w-none pointer-events-none z-10 mix-blend-multiply contrast-200 saturate-100 brightness-100"
+                    className="about-circle-decor absolute -top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] max-w-none pointer-events-none z-10 mix-blend-multiply contrast-200 saturate-200 brightness-110"
                     style={{ transform: 'translate(-50%, -50%) rotate(-5deg)' }}
                   />
                 </span>
               </p>
 
-              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)] -mt-4">
+              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)]">
                 I love 
                 <span className="relative inline-block mx-1 px-[0.3rem] font-homemade">
                   <span className="relative z-10 font-homemade text-white">conspiracy theories</span>

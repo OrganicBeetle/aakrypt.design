@@ -1,0 +1,110 @@
+{
+  "hash": "304163d9",
+  "configHash": "a0dc7c1f",
+  "lockfileHash": "6e477a4a",
+  "browserHash": "b615dc34",
+  "optimized": {
+    "@react-three/fiber": {
+      "src": "../../node_modules/@react-three/fiber/dist/react-three-fiber.esm.js",
+      "file": "@react-three_fiber.js",
+      "fileHash": "673ac5ad",
+      "needsInterop": false
+    },
+    "@studio-freight/lenis": {
+      "src": "../../node_modules/@studio-freight/lenis/dist/lenis.mjs",
+      "file": "@studio-freight_lenis.js",
+      "fileHash": "0fb6d6f3",
+      "needsInterop": false
+    },
+    "framer-motion": {
+      "src": "../../node_modules/framer-motion/dist/es/index.mjs",
+      "file": "framer-motion.js",
+      "fileHash": "fbffae0c",
+      "needsInterop": false
+    },
+    "gsap": {
+      "src": "../../node_modules/gsap/index.js",
+      "file": "gsap.js",
+      "fileHash": "cf5bf5e1",
+      "needsInterop": false
+    },
+    "gsap/ScrollTrigger": {
+      "src": "../../node_modules/gsap/ScrollTrigger.js",
+      "file": "gsap_ScrollTrigger.js",
+      "fileHash": "43f51104",
+      "needsInterop": false
+    },
+    "gsap/all": {
+      "src": "../../node_modules/gsap/all.js",
+      "file": "gsap_all.js",
+      "fileHash": "f3657537",
+      "needsInterop": false
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "b1a87c84",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "78124f9f",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "cea29e2d",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "de595611",
+      "needsInterop": true
+    },
+    "splitting": {
+      "src": "../../node_modules/splitting/dist/splitting.js",
+      "file": "splitting.js",
+      "fileHash": "52ff6acd",
+      "needsInterop": true
+    },
+    "three": {
+      "src": "../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "30117efc",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "CSSPlugin-DR9Wafg_": {
+      "file": "CSSPlugin-DR9Wafg_.js",
+      "isDynamicEntry": false
+    },
+    "ScrollTrigger-BqZxTal2": {
+      "file": "ScrollTrigger-BqZxTal2.js",
+      "isDynamicEntry": false
+    },
+    "chunk-BoAXSpZd": {
+      "file": "chunk-BoAXSpZd.js",
+      "isDynamicEntry": false
+    },
+    "jsx-runtime-CVCLiDPH": {
+      "file": "jsx-runtime-CVCLiDPH.js",
+      "isDynamicEntry": false
+    },
+    "react-dom-r6q3SGj9": {
+      "file": "react-dom-r6q3SGj9.js",
+      "isDynamicEntry": false
+    },
+    "scheduler-BqvYNbdI": {
+      "file": "scheduler-BqvYNbdI.js",
+      "isDynamicEntry": false
+    },
+    "three.module-BhQJB7s2": {
+      "file": "three.module-BhQJB7s2.js",
+      "isDynamicEntry": false
+    }
+  }
+}

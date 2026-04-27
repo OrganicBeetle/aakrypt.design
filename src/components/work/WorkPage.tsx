@@ -10,21 +10,59 @@ import styles from './Work.module.css'
 gsap.registerPlugin(ScrollTrigger)
 
 const projects: ProjectData[] = [
-  { title: "bag", video: "/videos/bag.mp4", pdf: "https://drive.google.com/file/d/1x4EcWRPvyVobNbm9s7n-SH9QE5Fib2W8/preview", index: "01/07", gridClass: "bag" },
+  { title: "FLUOROVISION: HANDBAG", 
+    poster: "/poster/Fluorovision.png",
+    video: "/videos/fluorovision.mp4", 
+    pdf: "https://drive.google.com/file/d/1x4EcWRPvyVobNbm9s7n-SH9QE5Fib2W8/preview", 
+    index: "01/09", 
+    gridClass: "bag" },
+  
+  { title: "MYRIAD: TRANSFORM I", 
+    video: "/videos/transform_ii.mp4",
+    poster: "/poster/myriad.jpeg", 
+    pdf: "https://drive.google.com/file/d/1c1Od0CogjhFFXSZBDEgubbSF2xhUohT6/preview", 
+    index: "02/09", 
+    gridClass: "top" },
+  
   { 
-    title: "Etched: Denim", 
+    title: "ETCHED: DENIM [INDUSTRY PROJECT]", 
     video: "/videos/denim.mp4", 
     poster: "/poster/denim_thumbnail.png",
     pdf: "https://drive.google.com/file/d/1RpQKN-UK4SeZd_Ug7MIZ78hwO4sVOBGb/preview", 
-    index: "02/07", 
+    index: "03/09", 
     gridClass: "denim" 
   },
 
-  { title: "shirt", video: "/videos/shirt.mp4", pdf: "/pdfs/shirt.pdf", index: "03/07", gridClass: "shirt" },
-  { title: "transform ii", video: "/videos/transform_ii.mp4", pdf: "https://drive.google.com/file/d/1c1Od0CogjhFFXSZBDEgubbSF2xhUohT6/preview", index: "04/07", gridClass: "transform_ii" },
-  { title: "jacket", video: "/videos/jacket.mp4", pdf: "https://drive.google.com/file/d/1q_HKSiQ0vWvMNmsulMtwd71xdT_bVR8t/preview", index: "05/07", gridClass: "jacket" },
-  { title: "craft", video: "/videos/craft.mp4", pdf: "https://drive.google.com/file/d/11sZ2VIc9idH9w6I8znFmNvagyAXRTg5f/preview", index: "06/07", gridClass: "craft" },
-  { title: "digital work", video: "/videos/digital_work.mp4", pdf: "/pdfs/digital_work.pdf", index: "07/07", gridClass: "digital_work" },
+  { title: "AXIS: SHIRT [CLIENT PROJECT]",
+    video: "/videos/shirt.mp4", 
+    poster: "/poster/shirt-centre.jpeg",
+    pdf: "/pdfs/shirt.pdf", 
+    index: "04/09", 
+    gridClass: "shirt" },
+  
+  { title: "MILAN DI KALA: TOP", 
+    video: "/videos/top.mp4",
+    pdf: "",
+    poster: "/poster/milan-di-kala.jpeg",
+    index: "05/09", 
+    gridClass: "transform_ii" },
+  
+  { title: "EXTRAS", 
+    video: "",
+    pdf: "",
+    index: "06/09", 
+    gridClass: "right_transform" },
+  
+  { title: "SACRED WITHIN: JACKET", video: "/videos/jacket.mp4", pdf: "https://drive.google.com/file/d/1q_HKSiQ0vWvMNmsulMtwd71xdT_bVR8t/preview", index: "07/09", gridClass: "jacket" },
+
+  { title: "VINAMR: CRAFT", 
+    video: "/videos/craft.mp4",
+    poster: "/poster/craft.png", 
+    pdf: "https://drive.google.com/file/d/11sZ2VIc9idH9w6I8znFmNvagyAXRTg5f/preview", index: "08/09", gridClass: "craft" },
+  
+  { title: "NOIR NEXUS: PASSION PROJECT", video: "/videos/digital_work.mp4", 
+    poster: "/poster/noir-nexus.jpeg",
+    pdf: "https://drive.google.com/file/d/1CdW_r7YpccIAXCByTDjZcw3sgxtWD3KX/preview", index: "09/09", gridClass: "digital_work" },
 ]
 
 const WorkPage: React.FC = () => {
@@ -41,12 +79,12 @@ const WorkPage: React.FC = () => {
           {
             opacity: 1,
             y: 0,
-            ease: "power1.out",
+            ease: "power2.out",
             scrollTrigger: {
               trigger: labelRef.current,
-              start: "top 98%", // Start as soon as it peeks
-              end: "top 85%",   // Finish quickly
-              scrub: 0.3,
+              start: "top 98%", 
+              end: "top 92%",   
+              scrub: true,
             }
           }
         )

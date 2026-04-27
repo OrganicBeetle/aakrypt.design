@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import notepadImg from '../assets/About Me/notepad.png';
 import photoPaperImg from '../assets/About Me/photo paper.png';
+import moiImg from '../assets/About Me/Moi.jpeg';
 import circleDecor from '../assets/DesignPhilosophy/circle.png';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -64,7 +65,7 @@ const AboutMe: React.FC = () => {
         <div className="relative w-full lg:w-[40%] flex flex-col justify-between items-start min-h-[70vh] lg:min-h-0">
           <div 
             ref={photoRef}
-            className="photo-paper-container -mt-[2vh] lg:-mt-[2vh] -ml-[2vw] lg:-ml-[2vw]"
+            className="photo-paper-container relative -mt-[2vh] lg:-mt-[2vh] -ml-[2vw] lg:-ml-[2vw]"
             style={{
               width: 'clamp(220px, 25vw, 380px)',
               filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.25))'
@@ -72,9 +73,16 @@ const AboutMe: React.FC = () => {
           >
             <img 
               src={photoPaperImg} 
-              alt="Photo placeholder" 
+              alt="Photo paper background" 
               className="w-full h-auto"
             />
+            <div className="absolute inset-0 flex items-center justify-center p-[6%] pb-[14%]">
+              <img 
+                src={moiImg} 
+                alt="Aakarshita Portrait" 
+                className="w-full h-full object-cover rounded-sm shadow-inner mb-5"
+              />
+            </div>
           </div>
 
           {/* Heading at background's bottom left */}
@@ -120,23 +128,23 @@ const AboutMe: React.FC = () => {
             
             {/* Content area inside notepad */}
             <div 
-              className="absolute inset-0 p-[12%] pt-[18%] lg:pt-[15%] flex flex-col items-start justify-start text-left text-black font-script leading-[1.4] overflow-y-auto rotate-[10deg] mt-[15vh]"
+              className="absolute inset-0 p-[12%] pt-[18%] lg:pt-[15%] flex flex-col items-start justify-start text-left text-black font-palisade leading-[1.4] overflow-y-auto rotate-[10deg] mt-[15vh]"
             >
-              <p className="font-script text-[clamp(1.1rem,2.5vw,1.6rem)] mb-5">
+              <p className="font-palisade text-[clamp(1.1rem,2.5vw,1.6rem)] mb-5">
                 Hi! I am Aakarshita,
-                <span className="relative inline-block mx-1 px-2 font-script">
-                  <span className="relative z-10 font-script text-white">a year III fashion design student</span>
+                <span className="relative inline-block mx-1 px-[0.3rem] font-palisade">
+                  <span className="relative z-10 font-palisade text-white">a year III fashion design student</span>
                   <span 
-                    className="absolute inset-0 bg-[#9A0606] opacity-100 -rotate-[] scale-110 skew-x-[-10deg]" 
+                    className="absolute inset-0 bg-[#9A0606] opacity-100 -rotate-[] scale-100 skew-x-[-10deg]" 
                     style={{ borderRadius: '20% 80% 30% 70% / 60% 30% 70% 40%' }}
                   />
                 </span>
-                at IIAD Delhi.
+                at Indian Institute of Art & Design Delhi.
               </p>
               
-              <p className="font-script text-[clamp(1.1rem,2.5vw,1.6rem)] mb-8">
+              <p className="font-palisade text-[clamp(1.1rem,2.5vw,1.6rem)] mb-8">
                 My work is submerged in a universe that I created, with each project manifesting itself into a 
-                <span className="relative inline-block px-1 mx-1 font-script">
+                <span className="relative inline-block px-1 mx-1 font-palisade">
                   persona.
                   <img 
                     src={circleDecor} 
@@ -147,12 +155,12 @@ const AboutMe: React.FC = () => {
                 </span>
               </p>
 
-              <p className="font-script text-[clamp(1.1rem,2.5vw,1.6rem)] -mt-7">
+              <p className="font-palisade text-[clamp(1.1rem,2.5vw,1.6rem)] -mt-7">
                 I love 
-                <span className="relative inline-block mx-1 px-2 font-script">
-                  <span className="relative z-10 font-script text-white">conspiracy theories</span>
+                <span className="relative inline-block mx-1 px-[0.3rem] font-palisade">
+                  <span className="relative z-10 font-palisade text-white">conspiracy theories</span>
                   <span 
-                    className="absolute inset-0 bg-[#9A0606] opacity-100 rotate-1 scale-105 skew-x-[5deg]" 
+                    className="absolute inset-0 bg-[#9A0606] opacity-100 rotate-1 scale-100 skew-x-[5deg]" 
                     style={{ borderRadius: '70% 30% 80% 20% / 30% 60% 40% 70%' }}
                   />
                 </span>, 

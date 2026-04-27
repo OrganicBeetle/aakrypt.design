@@ -28,6 +28,30 @@
     font-style: normal;
     font-display: swap;
   }
+
+  @font-face {
+    font-family: 'Study Night';
+    src: url('./assets/fonts/Study Night.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Celestine';
+    src: url('./assets/fonts/celestine.regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Palisade';
+    src: url('./assets/fonts/Palisade.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
 @layer utilities {
@@ -39,6 +63,15 @@
   }
   .font-script {
     font-family: 'Biro Script Plus', cursive;
+  }
+  .font-study-night {
+    font-family: 'Study Night', cursive;
+  }
+  .font-celestine {
+    font-family: 'Celestine', cursive;
+  }
+  .font-palisade {
+    font-family: 'Palisade', cursive;
   }
   .font-ui {
     font-family: 'Inter', sans-serif;

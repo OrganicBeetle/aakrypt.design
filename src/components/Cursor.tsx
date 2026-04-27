@@ -67,12 +67,22 @@ function Cursor() {
       setIsClicked(false)
     }
 
+    const handleScroll = () => {
+      const target = document.elementFromPoint(cursorX.get(), cursorY.get()) as HTMLElement | null
+      const interactiveTarget = target?.closest<HTMLElement>('a, button, [data-cursor]')
+      const cursorTarget = target?.closest<HTMLElement>('[data-cursor]')
+
+      setIsInteractive(Boolean(interactiveTarget))
+      setCursorLabel(cursorTarget?.dataset.cursor ?? '')
+    }
+
     handleMediaChange()
 
     mediaQuery.addEventListener('change', handleMediaChange)
     window.addEventListener('mousemove', handleMouseMove)
     window.addEventListener('mousedown', handleMouseDown)
     window.addEventListener('mouseup', handleMouseUp)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     document.addEventListener('mouseover', handlePointerOver)
     document.addEventListener('mouseout', handlePointerOut)
     document.addEventListener('mouseleave', handleMouseLeave)
@@ -82,6 +92,7 @@ function Cursor() {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('scroll', handleScroll)
       document.removeEventListener('mouseover', handlePointerOver)
       document.removeEventListener('mouseout', handlePointerOut)
       document.removeEventListener('mouseleave', handleMouseLeave)

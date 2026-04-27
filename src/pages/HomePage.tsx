@@ -4,6 +4,7 @@ import Work from '../sections/Work'
 import CollageWheel from '../components/CollageWheel'
 import AboutMe from '../sections/AboutMe'
 import Skills from '../sections/Skills'
+import SkillsSection from '../sections/SkillsSection'
 import { useEffect } from 'react'
 
 function HomePage() {
@@ -22,6 +23,7 @@ function HomePage() {
       <AboutMe />
       <Skills />
       <Contact />
+      <SkillsSection />
     </main>
   )
 }

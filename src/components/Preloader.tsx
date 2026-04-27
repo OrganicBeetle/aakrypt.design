@@ -1,21 +1,25 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
 function Preloader() {
   const overlayRef = useRef<HTMLDivElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
-  const [isMounted, setIsMounted] = useState(() => {
-    if (typeof window === 'undefined') {
-      return true
+  const [isMounted, setIsMounted] = useState(false)
+  const [shouldRender, setShouldRender] = useState(false)
+
+  useEffect(() => {
+    const seen = window.sessionStorage.getItem('aakarshita-preloader-seen')
+    if (seen !== 'true') {
+      setShouldRender(true)
+      setIsMounted(true)
     }
-    return window.sessionStorage.getItem('aakarshita-preloader-seen') !== 'true'
-  })
+  }, [])
 
   const text = "AAKARSHITA"
   const letters = text.split("")
 
-  useLayoutEffect(() => {
-    if (!isMounted) return
+  useEffect(() => {
+    if (!isMounted || !shouldRender) return
 
     const overlay = overlayRef.current
     const container = containerRef.current
@@ -35,7 +39,7 @@ function Preloader() {
         onComplete: () => {
           // Final fallback to ensure site is revealed
           window.sessionStorage.setItem('aakarshita-preloader-seen', 'true')
-          setIsMounted(false)
+          setShouldRender(false)
         }
       })
 
@@ -50,7 +54,6 @@ function Preloader() {
       })
 
       // 3. Loading "Breathing" - limited repetitions instead of infinite
-      // This acts as our "loading" indicator
       tl.to(chars, {
         opacity: 0.3,
         duration: 0.6,
@@ -73,15 +76,15 @@ function Preloader() {
       .to(overlay, {
         yPercent: -100,
         duration: 1.1,
-        ease: [0.76, 0, 0.24, 1] // Custom organic ease
+        ease: [0.76, 0, 0.24, 1] 
       }, "-=0.3")
 
     }, overlay)
 
     return () => ctx.revert()
-  }, [isMounted])
+  }, [isMounted, shouldRender])
 
-  if (!isMounted) return null
+  if (!shouldRender) return null
 
   return (
     <div
@@ -91,7 +94,8 @@ function Preloader() {
     >
       <div 
         ref={containerRef} 
-        className="flex overflow-visible perspective-1000"
+        className="flex overflow-visible"
+        style={{ perspective: '1000px' }}
       >
         {letters.map((char, i) => (
           <span

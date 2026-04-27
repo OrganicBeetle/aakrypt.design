@@ -36,7 +36,7 @@ const projects: ProjectData[] = [
   { title: "AXIS: SHIRT [CLIENT PROJECT]",
     video: "/videos/shirt.mp4", 
     poster: "/poster/shirt-centre.jpeg",
-    pdf: "/pdfs/shirt.pdf", 
+    pdf: "https://drive.google.com/file/d/1zZr4uKU7Gtd-w8PHVz_nKdpidu-mFB_K/preview", 
     index: "04/09", 
     gridClass: "shirt" },
   
@@ -48,12 +48,16 @@ const projects: ProjectData[] = [
     gridClass: "transform_ii" },
   
   { title: "EXTRAS", 
-    video: "",
-    pdf: "",
+    video: "/videos/extras.mp4",
+    poster: "/poster/extras.png",
+    pdf: "https://drive.google.com/file/d/15gdIuWc1fuN4bGgEPHq5BcPYqFpgWaMN/preview",
     index: "06/09", 
     gridClass: "right_transform" },
   
-  { title: "SACRED WITHIN: JACKET", video: "/videos/jacket.mp4", pdf: "https://drive.google.com/file/d/1q_HKSiQ0vWvMNmsulMtwd71xdT_bVR8t/preview", index: "07/09", gridClass: "jacket" },
+  { title: "SACRED WITHIN: JACKET", 
+    video: "/videos/jacket.mp4", 
+    poster: "/poster/jacket.png",
+    pdf: "https://drive.google.com/file/d/1q_HKSiQ0vWvMNmsulMtwd71xdT_bVR8t/preview", index: "07/09", gridClass: "jacket" },
 
   { title: "VINAMR: CRAFT", 
     video: "/videos/craft.mp4",
@@ -112,7 +116,7 @@ const WorkPage: React.FC = () => {
               scrollTrigger: {
                 trigger: card,
                 start: "top 90%",
-                toggleActions: "play none none reverse"
+                toggleActions: "play none none none" // Only play once when entering, remains visible
               }
             }
           );

@@ -56,15 +56,18 @@ const Navbar: React.FC = () => {
 
   const handleClick = (sectionId: string) => {
     const lenis = (window as any).lenis;
+    const offset = sectionId === 'work' ? 100 : 0; // Add 100px offset for work section
+
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
           if (lenis) {
-            lenis.scrollTo(element);
+            lenis.scrollTo(element, { offset });
           } else {
-            element.scrollIntoView({ behavior: 'smooth' });
+            const top = element.getBoundingClientRect().top + window.pageYOffset + offset;
+            window.scrollTo({ top, behavior: 'smooth' });
           }
         }
       }, 100);
@@ -72,9 +75,10 @@ const Navbar: React.FC = () => {
       const element = document.getElementById(sectionId);
       if (element) {
         if (lenis) {
-          lenis.scrollTo(element);
+          lenis.scrollTo(element, { offset });
         } else {
-          element.scrollIntoView({ behavior: 'smooth' });
+          const top = element.getBoundingClientRect().top + window.pageYOffset + offset;
+          window.scrollTo({ top, behavior: 'smooth' });
         }
       }
     }

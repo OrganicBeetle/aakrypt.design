@@ -25,7 +25,7 @@ const AboutMe: React.FC = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 75%',
-          toggleActions: 'play none none reverse',
+          toggleActions: 'restart none none restart',
         }
       });
 
@@ -47,7 +47,18 @@ const AboutMe: React.FC = () => {
         opacity: 1,
         duration: 1.2,
         ease: 'power4.out'
-      }, '-=0.6');
+      }, '-=0.6')
+      .fromTo(".about-circle-decor", 
+        { scale: 0, opacity: 0, rotate: -45 },
+        { 
+          scale: 1, 
+          opacity: 1.0, 
+          rotate: -5, 
+          duration: 1, 
+          ease: "back.out(1.7)" 
+        },
+        "+=0.2" // Slight delay after notepad/text finishes
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -116,24 +127,23 @@ const AboutMe: React.FC = () => {
             className="notepad-wrapper relative"
             style={{
               width: 'clamp(620px, 55vw, 1080px)', 
-              transform: 'rotate(-2deg)', 
               filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.4))'
             }}
           >
             <img 
               src={notepadImg} 
               alt="Notepad" 
-              className="w-full h-auto scale-105 opacity-75"
+              className="w-full h-auto scale-105 opacity-75 -rotate-[7deg]"
             />
             
             {/* Content area inside notepad */}
             <div 
-              className="absolute inset-0 p-[12%] pt-[18%] lg:pt-[15%] flex flex-col items-start justify-start text-left text-black font-palisade leading-[1.4] overflow-y-auto rotate-[10deg] mt-[15vh]"
+              className="absolute inset-0 p-[12%] pt-[18%] lg:pt-[15%] flex flex-col items-start justify-start text-left text-black font-homemade leading-[1.4] overflow-y-auto mt-[15vh]"
             >
-              <p className="font-palisade text-[clamp(1.1rem,2.5vw,1.6rem)] mb-5">
+              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)] -mb-2">
                 Hi! I am Aakarshita,
-                <span className="relative inline-block mx-1 px-[0.3rem] font-palisade">
-                  <span className="relative z-10 font-palisade text-white">a year III fashion design student</span>
+                <span className="relative inline-block mx-1 px-[0.3rem] font-homemade">
+                  <span className="relative z-10 font-homemade text-white">a year III fashion design student</span>
                   <span 
                     className="absolute inset-0 bg-[#9A0606] opacity-100 -rotate-[] scale-100 skew-x-[-10deg]" 
                     style={{ borderRadius: '20% 80% 30% 70% / 60% 30% 70% 40%' }}
@@ -142,25 +152,25 @@ const AboutMe: React.FC = () => {
                 at Indian Institute of Art & Design Delhi.
               </p>
               
-              <p className="font-palisade text-[clamp(1.1rem,2.5vw,1.6rem)] mb-8">
+              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)] mb-2">
                 My work is submerged in a universe that I created, with each project manifesting itself into a 
-                <span className="relative inline-block px-1 mx-1 font-palisade">
+                <span className="relative inline-block px-1 mx-1 font-homemade">
                   persona.
                   <img 
                     src={circleDecor} 
                     alt="" 
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] max-w-none opacity-80 pointer-events-none -z-10"
+                    className="about-circle-decor absolute -top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] max-w-none pointer-events-none z-10 mix-blend-multiply contrast-200 saturate-100 brightness-100"
                     style={{ transform: 'translate(-50%, -50%) rotate(-5deg)' }}
                   />
                 </span>
               </p>
 
-              <p className="font-palisade text-[clamp(1.1rem,2.5vw,1.6rem)] -mt-7">
+              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)] -mt-4">
                 I love 
-                <span className="relative inline-block mx-1 px-[0.3rem] font-palisade">
-                  <span className="relative z-10 font-palisade text-white">conspiracy theories</span>
+                <span className="relative inline-block mx-1 px-[0.3rem] font-homemade">
+                  <span className="relative z-10 font-homemade text-white">conspiracy theories</span>
                   <span 
-                    className="absolute inset-0 bg-[#9A0606] opacity-100 rotate-1 scale-100 skew-x-[5deg]" 
+                    className="absolute inset-0 bg-[#9A0606] opacity-100 rotate-1 scale-100 skew-x-[5deg] " 
                     style={{ borderRadius: '70% 30% 80% 20% / 30% 60% 40% 70%' }}
                   />
                 </span>, 

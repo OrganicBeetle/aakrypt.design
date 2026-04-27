@@ -65,11 +65,9 @@ const CollageWheel = () => {
         scrollTrigger: {
           trigger: section,
           start: "top 75%",
-          once: true
+          toggleActions: "restart none none restart"
         }
-      });
-
-      // 1. CREATE (main heading) enters the stage
+      });      // 1. CREATE (main heading) enters the stage
       tl.to(create, {
         opacity: 1,
         y: 0,
@@ -95,7 +93,20 @@ const CollageWheel = () => {
         ease: "power3.out"
       }, "-=0.8"); // Start while headings are finishing
 
-      // 4. Parallax Background Assets
+      // 4. Circle Accent Reveal (Delayed after text)
+      tl.fromTo(".create-circle-decor", 
+        { scale: 0, opacity: 0, rotate: -45 },
+        { 
+          scale: 1, 
+          opacity: 0.9, 
+          rotate: 3, 
+          duration: 1, 
+          ease: "back.out(1.7)" 
+        },
+        "+=0.2"
+      );
+
+      // 5. Parallax Background Assets
       gsap.to(".parallax-character", {
         y: -80,
         ease: "none",
@@ -166,7 +177,7 @@ const CollageWheel = () => {
               <img 
                 src={circleDecor} 
                 alt="" 
-                className="parallax-circle absolute -top-[4.5vh] left-[5vw] -translate-x-1/2 -translate-y-1/2 w-[150%] max-w-none scale-[1.1] opacity-[0.9] -z-10" 
+                className="create-circle-decor parallax-circle absolute -top-[4.5vh] left-[5vw] -translate-x-1/2 -translate-y-1/2 w-[150%] max-w-none scale-[1.1] opacity-[0.9] -z-10" 
                 style={{ transform: 'translate(-50%, -50%) rotate(3deg)' }}
               />
               <span className='font-mono'>characters.</span>

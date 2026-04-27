@@ -3,7 +3,6 @@ import Hero from '../sections/Hero'
 import Work from '../sections/Work'
 import CollageWheel from '../components/CollageWheel'
 import AboutMe from '../sections/AboutMe'
-import Skills from '../sections/Skills'
 import SkillsSection from '../sections/SkillsSection'
 import { useEffect } from 'react'
 
@@ -16,14 +15,13 @@ function HomePage() {
   }, [])
 
   return (
-    <main className="text-chalk" aria-label="Portfolio app shell">
+    <main className="text-chalk bg-transparent" aria-label="Portfolio app shell">
       <Hero />
       <CollageWheel />
       <Work />
       <AboutMe />
-      <Skills />
-      <Contact />
       <SkillsSection />
+      <Contact />
     </main>
   )
 }

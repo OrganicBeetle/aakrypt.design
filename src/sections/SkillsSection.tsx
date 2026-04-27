@@ -1,38 +1,49 @@
 import { motion } from 'framer-motion'
 import TarotCard from '../components/TarotCard'
 
+// Import card assets
+import techFront from '../assets/SkillsPage/technical tarot front.png'
+import techBack from '../assets/SkillsPage/technical tarot back.png'
+import creativeFront from '../assets/SkillsPage/creative tarot front.png'
+import creativeBack from '../assets/SkillsPage/creative tarot back.png'
+import digitalFront from '../assets/SkillsPage/digital tarot front.png'
+import digitalBack from '../assets/SkillsPage/digital tarot back.png'
+
 function SkillsSection() {
   const cards = [
     {
       title: 'TECHNICAL',
-      skills: ['Pattern Making', 'Draping', 'Garment Construction'],
+      frontImage: techFront,
+      backImage: techBack,
       delay: 0,
-      dealDelay: 0.4,
-      deckX: '110%',
+      dealDelay: 1.2, // Increased delay to let stack be visible
+      deckX: '115%', // Pull into center stack from its flex position
       deckY: 10,
-      deckRotate: -10,
+      deckRotate: -5,
       finalY: 32,
       finalRotate: -4,
     },
     {
       title: 'CREATIVE',
-      skills: ['Illustration', 'Concept Development', 'Mood Boarding'],
-      delay: 80,
-      dealDelay: 0.7,
+      frontImage: creativeFront,
+      backImage: creativeBack,
+      delay: 150,
+      dealDelay: 1.8, 
       deckX: '0%',
       deckY: 0,
-      deckRotate: 3,
+      deckRotate: 0,
       finalY: -32,
       finalRotate: 0,
     },
     {
-      title: 'TOOLS',
-      skills: ['Photoshop', 'Illustrator', 'Canva'],
-      delay: 160,
-      dealDelay: 1,
-      deckX: '-110%',
+      title: 'DIGITAL',
+      frontImage: digitalFront,
+      backImage: digitalBack,
+      delay: 300,
+      dealDelay: 2.4, 
+      deckX: '-115%', // Pull into center stack from its flex position
       deckY: 10,
-      deckRotate: 10,
+      deckRotate: 5,
       finalY: 32,
       finalRotate: 4,
     },
@@ -41,21 +52,28 @@ function SkillsSection() {
   return (
     <section
       id="skills-section"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden text-chalk"
+      className="relative flex min-h-[120vh] w-full items-center justify-center overflow-hidden px-8 py-24 text-chalk sm:px-12 lg:px-20 lg:py-32"
       aria-label="Skills section"
+      style={{ 
+        background: 'none', 
+        backgroundColor: 'transparent', 
+        border: 'none',
+        boxShadow: 'none',
+        outline: 'none'
+      }}
     >
-      <div className="relative flex min-h-screen w-full items-center justify-center px-6">
-      <div className="relative flex w-full max-w-6xl flex-col items-center justify-center gap-8 sm:flex-row sm:gap-6 lg:gap-10">
+      <div className="relative flex min-h-[120vh] w-full items-center justify-center" style={{ background: 'none' }}>
+        <div className="relative flex w-full max-w-7xl flex-col items-center justify-center gap-12 sm:flex-row sm:gap-8 lg:gap-16">
           {cards.map((card, index) => (
             <motion.div
               key={`${card.title}-${index}`}
-              className="relative z-10 aspect-[3/5] w-[min(72vw,260px)] sm:w-[30%]"
+              className="relative z-10 aspect-[3/4.2] w-[min(72vw,240px)] sm:w-[28%]"
               initial={{
                 x: card.deckX,
                 y: card.deckY,
                 rotate: card.deckRotate,
-                scale: 0.96,
-                opacity: 0.92,
+                scale: 0.98,
+                opacity: 1, // Visible stack
               }}
               whileInView={{
                 x: 0,
@@ -64,16 +82,17 @@ function SkillsSection() {
                 scale: 1,
                 opacity: 1,
               }}
-              viewport={{ once: true, amount: 0.45 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{
                 delay: card.dealDelay,
-                duration: 0.95,
+                duration: 1.8, // Slow, fluid dealing
                 ease: [0.16, 1, 0.3, 1],
               }}
+              style={{ background: 'none' }}
             >
               <TarotCard
-                title={card.title}
-                skills={card.skills}
+                frontImage={card.backImage}
+                backImage={card.frontImage}
                 delay={card.delay}
               />
             </motion.div>

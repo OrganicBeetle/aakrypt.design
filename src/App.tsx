@@ -6,7 +6,6 @@ import { Route, Routes } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import useLenis from './hooks/useLenis'
 import HomePage from './pages/HomePage'
-import WorkDetailPage from './pages/WorkDetailPage'
 
 function App() {
   const location = useLocation()
@@ -27,7 +26,6 @@ function App() {
         >
           <Routes location={location}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/work/:id" element={<WorkDetailPage />} />
           </Routes>
         </motion.div>
       </AnimatePresence>

@@ -52,6 +52,14 @@
     font-style: normal;
     font-display: swap;
   }
+
+  @font-face {
+    font-family: 'Homemade Apple';
+    src: url('./assets/fonts/HomemadeApple.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
 @layer utilities {
@@ -72,6 +80,12 @@
   }
   .font-palisade {
     font-family: 'Palisade', cursive;
+  }
+  .font-homemade {
+    font-family: 'Homemade Apple', serif;
+  }
+  .font-anton {
+    font-family: 'Anton', sans-serif;
   }
   .font-ui {
     font-family: 'Inter', sans-serif;

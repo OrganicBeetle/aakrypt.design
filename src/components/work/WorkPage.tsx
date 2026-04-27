@@ -28,7 +28,7 @@ const projects: ProjectData[] = [
     title: "ETCHED: DENIM [INDUSTRY PROJECT]", 
     video: "/videos/denim.mp4", 
     poster: "/poster/denim_thumbnail.png",
-    pdf: "https://drive.google.com/file/d/1RpQKN-UK4SeZd_Ug7MIZ78hwO4sVOBGb/preview", 
+    pdf: "https://drive.google.com/file/d/1x8bn1-kSG4KaMS-V0N6A0JL1Fe7P6Wut/preview", 
     index: "03/09", 
     gridClass: "denim" 
   },

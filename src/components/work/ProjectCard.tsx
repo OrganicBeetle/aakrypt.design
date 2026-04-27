@@ -12,7 +12,12 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
 
   const handleMouseEnter = () => {
     if (videoRef.current) {
-      videoRef.current.play().catch(err => console.log("Video play interrupted:", err))
+      const playPromise = videoRef.current.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.log("Video play interaction handled:", err)
+        })
+      }
     }
   }
 
@@ -20,7 +25,6 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
     if (videoRef.current) {
       videoRef.current.pause()
       videoRef.current.currentTime = 0
-      videoRef.current.load() // Force reload to ensure poster shows
     }
   }
 
@@ -44,13 +48,7 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
           muted
           loop
           playsInline
-          preload="none"
-          onEnded={() => {
-            if (videoRef.current) {
-              videoRef.current.currentTime = 0;
-              videoRef.current.play();
-            }
-          }}
+          preload="auto"
         />
         <div className={styles.cardMeta}>
           <h3 className={styles.cardTitle}>{project.title}</h3>

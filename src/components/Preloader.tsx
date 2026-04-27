@@ -76,7 +76,7 @@ function Preloader() {
       .to(overlay, {
         yPercent: -100,
         duration: 1.1,
-        ease: [0.76, 0, 0.24, 1] 
+        ease: "power4.inOut"
       }, "-=0.3")
 
     }, overlay)

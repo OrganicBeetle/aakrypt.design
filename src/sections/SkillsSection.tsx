@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import tarotFront from '../assets/SkillsPage/TarotFront.webp'
 import TarotCard from '../components/TarotCard'
 
 function SkillsSection() {

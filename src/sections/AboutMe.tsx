@@ -74,13 +74,13 @@ const AboutMe: React.FC = () => {
             <img 
               src={photoPaperImg} 
               alt="Photo paper background" 
-              className="w-full h-auto"
+              className="w-full h-auto mt-[10rem] scale-[250%] ml-[5rem]"
             />
-            <div className="absolute inset-0 flex items-center justify-center p-[6%] pb-[14%]">
+            <div className="absolute inset-0 flex items-center justify-center p-[6%] pb-[14%] mt-[10rem] scale-[300%] ml-[5rem]">
               <img 
                 src={moiImg} 
                 alt="Aakarshita Portrait" 
-                className="w-full h-full object-cover rounded-sm shadow-inner mb-5"
+                className="w-full h-full object-cover rounded-sm shadow-inner mt-[1.20rem] ml-2"
               />
             </div>
           </div>

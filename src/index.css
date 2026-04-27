@@ -291,8 +291,9 @@
 }
 
 .paper-surface {
+  background-color: #F1F0EE !important;
+  opacity: 1 !important;
   background-image:
-    linear-gradient(0deg, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.56)),
     repeating-linear-gradient(0deg, rgba(44, 53, 60, 0.012) 0, rgba(44, 53, 60, 0.012) 1px, transparent 1px, transparent 5px),
     var(--paper-texture);
 }

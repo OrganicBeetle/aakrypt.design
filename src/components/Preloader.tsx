@@ -62,7 +62,7 @@ function Preloader() {
   return (
     <div
       ref={overlayRef}
-      className="paper-surface fixed inset-0 z-[10000] flex items-center justify-center"
+      className="fixed inset-0 z-[10000] flex items-center justify-center bg-paper opacity-100 paper-surface"
     >
       <span
         ref={monogramRef}

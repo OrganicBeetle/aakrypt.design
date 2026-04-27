@@ -42,7 +42,7 @@ const projects: ProjectData[] = [
   
   { title: "MILAN DI KALA: TOP", 
     video: "/videos/top.mp4",
-    pdf: "",
+    pdf: "https://drive.google.com/file/d/129o9LH4M8lZ38uICHHzupteSk-mdJT3L/preview",
     poster: "/poster/milan-di-kala.jpeg",
     index: "05/09", 
     gridClass: "transform_ii" },

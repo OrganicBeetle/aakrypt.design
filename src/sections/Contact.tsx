@@ -10,7 +10,7 @@ const Contact = () => {
     { label: 'Email', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=aakrypt.design@gmail.com' },
     { label: 'Contact', href: `tel:${phoneNumber}`, isPhone: true },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aakarshita-sharma-design' },
-    { label: 'Resume', href: 'https://drive.google.com/file/d/120cLCEj_0yIuZKEsogPQCedudMxdhRBK/preview' },
+    { label: 'Resume', href: 'https://drive.google.com/file/d/1f7sIfV8g_sawS3kqDeQWy-DCpVRoM1H4/preview' },
     { label: 'Instagram', href: 'https://www.instagram.com/aakrypt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
   ]
 

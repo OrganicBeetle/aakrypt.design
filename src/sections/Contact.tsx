@@ -4,7 +4,7 @@ import characterImg from '../assets/ContactMe/Character.png'
 
 const Contact = () => {
   const [copyStatus, setCopyStatus] = useState(false)
-  const phoneNumber = '7683900870'
+  const phoneNumber = '+91 7683900870'
 
   const links = [
     { label: 'Email', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=aakrypt.design@gmail.com' },

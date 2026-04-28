@@ -143,11 +143,15 @@ const AboutMe: React.FC = () => {
               
               {/* Content area inside notepad */}
               <div 
-                className="absolute inset-0 p-[10%] pt-[15%] lg:pt-[15%] pb-[10%] flex flex-col items-start justify-start text-left text-black font-homemade leading-[1.2] mt-[8%] lg:mt-[13vh] overflow-y-auto scrollbar-hide rotate-[8deg]"
-                style={{ maxHeight: '72%' }}
+                className="absolute inset-x-0 p-[10%] flex flex-col items-start justify-start text-left text-black font-homemade leading-[1.2] overflow-y-auto scrollbar-hide rotate-[8deg]"
+                style={{ 
+                  top: '20%',
+                  height: '50%',
+                  maxHeight: '50%',
+                }}
               >
-                <div className="w-full space-y-[1vh] lg:space-y-[1.5vh]">
-                  <p className="font-homemade text-[clamp(1rem,3.2vw,2.1rem)]">
+                <div className="w-full space-y-[0.5vh] lg:space-y-[1vh]">
+                  <p className="font-homemade text-[clamp(calc(0.5rem+2px),2.1vw,calc(1.8rem+2px))]">
                     Hi! I am Aakarshita,
                     <span className="relative inline-block mx-[0.5vw] px-[0.5vw] font-homemade">
                       <span className="relative z-10 font-homemade text-white">a year III fashion design student</span>
@@ -159,20 +163,20 @@ const AboutMe: React.FC = () => {
                     at Indian Institute of Art & Design Delhi.
                   </p>
                   
-                  <p className="font-homemade text-[clamp(1rem,3.2vw,2.1rem)]">
+                  <p className="font-homemade text-[clamp(calc(0.5rem+2px),2.1vw,calc(1.8rem+2px))]">
                     My work is submerged in a universe that I created, with each project manifesting itself into a 
                     <span className="relative inline-block px-[0.5vw] mx-[0.5vw] font-homemade">
                       persona.
                       <img 
                         src={circleDecor} 
                         alt="" 
-                        className="about-circle-decor absolute top-[calc(-45%-5px)] left-[calc(50%+5px)] -translate-x-1/2 -translate-y-1/2 w-[151%] max-w-none pointer-events-none z-10 mix-blend-multiply contrast-200 saturate-200 brightness-110"
+                        className="about-circle-decor absolute top-[calc(-45%-8px)] left-[calc(50%+5px)] -translate-x-1/2 -translate-y-1/2 w-[151%] max-w-none pointer-events-none z-10 mix-blend-multiply contrast-200 saturate-200 brightness-110"
                         style={{ transform: 'translate(-50%, -50%) rotate(-5deg)' }}
                       />
                     </span>
                   </p>
 
-                  <p className="font-homemade text-[clamp(1rem,3.2vw,2.1rem)]">
+                  <p className="font-homemade text-[clamp(calc(0.5rem+2px),2.1vw,calc(1.8rem+2px))]">
                     I love 
                     <span className="relative inline-block mx-[0.5vw] px-[0.5vw] font-homemade">
                       <span className="relative z-10 font-homemade text-white">conspiracy theories</span>

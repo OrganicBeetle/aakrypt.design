@@ -120,6 +120,11 @@
     cursor: none !important;
   }
 
+  html.modal-open,
+  body.modal-open {
+    /* Styles handled dynamically in PdfModal to prevent scroll jump */
+  }
+
   body.modal-open .custom-cursor {
     display: none !important;
   }

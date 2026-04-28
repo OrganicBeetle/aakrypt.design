@@ -59,7 +59,7 @@ function Preloader() {
         duration: 0.6,
         stagger: {
           each: 0.08,
-          repeat: 2, // 2 pulses total (~2 seconds)
+          repeat: 1, // 2 pulses total (~2 seconds)
           yoyo: true
         },
         ease: "power1.inOut"

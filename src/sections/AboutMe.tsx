@@ -148,6 +148,7 @@ const AboutMe: React.FC = () => {
                   top: '20%',
                   height: '50%',
                   maxHeight: '50%',
+                  paddingLeft: 'calc(10% + 5px)'
                 }}
               >
                 <div className="w-full space-y-[0.5vh] lg:space-y-[1vh]">
@@ -160,7 +161,7 @@ const AboutMe: React.FC = () => {
                         style={{ borderRadius: '20% 80% 30% 70% / 60% 30% 70% 40%' }}
                       />
                     </span>
-                    at Indian Institute of Art & Design Delhi.
+                    at Indian <br /> Institute of Art & Design Delhi.
                   </p>
                   
                   <p className="font-homemade text-[clamp(calc(0.5rem+2px),2.1vw,calc(1.8rem+2px))]">

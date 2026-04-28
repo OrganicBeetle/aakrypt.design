@@ -47,10 +47,9 @@ const projects: ProjectData[] = [
     index: "05/09", 
     gridClass: "transform_ii" },
   
-  { title: "EXTRAS", 
-    video: "/videos/extras.mp4",
-    poster: "/poster/extras.png",
-    pdf: "https://drive.google.com/file/d/15gdIuWc1fuN4bGgEPHq5BcPYqFpgWaMN/preview",
+  { title: "NOIR NEXUS: PASSION PROJECT", video: "/videos/digital_work.mp4", 
+    poster: "/poster/noir-nexus.jpeg",
+    pdf: "https://drive.google.com/file/d/1CdW_r7YpccIAXCByTDjZcw3sgxtWD3KX/preview", 
     index: "06/09", 
     gridClass: "right_transform" },
   
@@ -64,9 +63,12 @@ const projects: ProjectData[] = [
     poster: "/poster/craft.png", 
     pdf: "https://drive.google.com/file/d/11sZ2VIc9idH9w6I8znFmNvagyAXRTg5f/preview", index: "08/09", gridClass: "craft" },
   
-  { title: "NOIR NEXUS: PASSION PROJECT", video: "/videos/digital_work.mp4", 
-    poster: "/poster/noir-nexus.jpeg",
-    pdf: "https://drive.google.com/file/d/1CdW_r7YpccIAXCByTDjZcw3sgxtWD3KX/preview", index: "09/09", gridClass: "digital_work" },
+  { title: "EXTRAS", 
+    video: "/videos/extras.mp4",
+    poster: "/poster/extras.png",
+    pdf: "https://drive.google.com/file/d/15gdIuWc1fuN4bGgEPHq5BcPYqFpgWaMN/preview",
+    index: "09/09", 
+    gridClass: "digital_work" },
 ]
 
 const WorkPage: React.FC = () => {
@@ -115,7 +117,7 @@ const WorkPage: React.FC = () => {
               ease: "power4.out",
               scrollTrigger: {
                 trigger: card,
-                start: "top 82%",
+                start: "top 95%",
                 toggleActions: "play none none none" 
               }
             }

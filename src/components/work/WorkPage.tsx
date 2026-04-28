@@ -86,8 +86,8 @@ const WorkPage: React.FC = () => {
             ease: "power2.out",
             scrollTrigger: {
               trigger: labelRef.current,
-              start: "top 98%", 
-              end: "top 92%",   
+              start: "top 120%", 
+              end: "top 80%",   
               scrub: true,
             }
           }
@@ -115,8 +115,8 @@ const WorkPage: React.FC = () => {
               ease: "power4.out",
               scrollTrigger: {
                 trigger: card,
-                start: "top 90%",
-                toggleActions: "play none none none" // Only play once when entering, remains visible
+                start: "top 82%",
+                toggleActions: "play none none none" 
               }
             }
           );
@@ -141,8 +141,8 @@ const WorkPage: React.FC = () => {
         <div className="relative mb-2 select-none">
           {/* Overlay Script: MY */}
           <span 
-            className="absolute -top-5 left-1 z-10 font-script text-[clamp(2rem,5vw,3.5rem)] text-white"
-            style={{ transform: 'rotate(-45deg)', transformOrigin: 'bottom left' }}
+            className="absolute -top-[calc(3vh+13px)] lg:-top-[calc(5vh+13px)] left-[0%] lg:left-[0%] z-10 font-script text-[clamp(1.5rem,5vw,3.5rem)] text-white whitespace-nowrap"
+            style={{ transformOrigin: 'bottom left' }}
           >
             My
           </span>

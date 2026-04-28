@@ -63,25 +63,25 @@ function SkillsSection() {
       }}
     >
       {/* Page Heading */}
-      <div className="absolute top-[8vh] right-[3vw] z-20 select-none pointer-events-none">
+      <div className="absolute top-[calc(8vh+5rem)] right-[5vw] lg:right-[3vw] z-20 select-none pointer-events-none text-right">
         <div className="relative inline-flex flex-col items-end">
           <motion.span 
-            initial={{ opacity: 0, x: -20, rotate: -15 }}
-            whileInView={{ opacity: 1, x: 0, rotate: -12 }}
+            initial={{ opacity: 0, x: '-12rem', y: '25px', rotate: 0 }}
+            whileInView={{ opacity: 1, x: '-12rem', y: '25px', rotate: [-25] }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="font-script text-[clamp(1.5rem,3.5vw,2.8rem)] text-chalk absolute top-[5.75rem] left-[25%] -ml-[25%] whitespace-nowrap z-10 transform"
-            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.2)' }}
+            className="font-script text-[clamp(1.2rem,4vw,2.8rem)] text-chalk whitespace-nowrap z-10 mb-[-1.5vh] mr-[4vw] lg:mr-[6vw]"
+            style={{ textShadow: '0 0.2vh 1vh rgba(0,0,0,0.2)' }}
           >
             My
           </motion.span>
-          
+
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-anton text-[clamp(4rem,8vw,8rem)] leading-[0.8] uppercase tracking-tighter text-[#c61212] z-0 top-[5.75rem] mt-[8rem] -left-[8rem]"
+            className="font-anton text-[clamp(3.5rem,10vw,12rem)] leading-[0.8] uppercase tracking-tighter text-[#c61212] z-0"
           >
             Skills
           </motion.h2>
@@ -89,11 +89,11 @@ function SkillsSection() {
       </div>
 
       <div className="relative flex min-h-[120vh] w-full items-center justify-center" style={{ background: 'none' }}>
-        <div className="relative flex w-full max-w-7xl flex-col items-center justify-center gap-12 sm:flex-row sm:gap-8 lg:gap-16">
+        <div className="relative flex w-full max-w-[90vw] flex-col items-center justify-center gap-[clamp(20px,5vh,60px)] sm:flex-row sm:gap-[clamp(15px,4vw,40px)] lg:gap-[clamp(20px,6vw,80px)]">
           {cards.map((card, index) => (
             <motion.div
               key={`${card.title}-${index}`}
-              className="relative z-10 aspect-[3/4.2] w-[min(72vw,240px)] sm:w-[28%]"
+              className="relative z-10 aspect-[3/4.2] w-[min(64.4vw,299px)] sm:w-[24%]"
               initial={{
                 x: card.deckX,
                 y: card.deckY,

@@ -19,7 +19,7 @@ const AboutMe: React.FC = () => {
       // Set initial states for scroll reveal
       gsap.set(photoRef.current, { x: -80, opacity: 0, rotate: -10 });
       gsap.set(headingRef.current, { y: 40, opacity: 0 });
-      gsap.set(notepadRef.current, { x: 120, opacity: 0 });
+      gsap.set(notepadRef.current, { x: 120, opacity: 0, rotate: -8 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -45,6 +45,7 @@ const AboutMe: React.FC = () => {
       .to(notepadRef.current, {
         x: 0,
         opacity: 1,
+        rotate: -8,
         duration: 1.2,
         ease: 'power4.out'
       }, '-=0.6')
@@ -68,51 +69,54 @@ const AboutMe: React.FC = () => {
     <section 
       ref={sectionRef}
       id="about-me"
-      className="relative min-h-screen w-full flex flex-col lg:flex-row overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col lg:flex-row overflow-hidden py-[10vh] lg:py-0"
     >
-      <div className="relative z-10 w-full h-full flex flex-col lg:flex-row px-[5vw] lg:px-[8vw] py-[6vh] lg:py-[8vh]">
+      <div className="relative z-10 w-full h-full flex flex-col lg:flex-row px-[5vw] lg:px-[8vw] py-[6vh] lg:py-[8vh] items-center lg:items-stretch">
         
         {/* 2. Left Side: Photo Paper (Top) & Heading (Bottom) */}
-        <div className="relative w-full lg:w-[40%] flex flex-col justify-between items-start min-h-[70vh] lg:min-h-0">
+        <div className="relative w-full lg:w-[40%] flex flex-col justify-between items-center lg:items-start min-h-[50vh] lg:min-h-0 mb-[8vh] lg:mb-0 ">
           <div 
             ref={photoRef}
-            className="photo-paper-container relative -mt-[2vh] lg:-mt-[2vh] -ml-[2vw] lg:-ml-[2vw]"
+            className="photo-paper-container relative lg:mt-[calc(5vh+5px)] lg:ml-[2vw]"
             style={{
-              width: 'clamp(220px, 25vw, 380px)',
-              filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.25))'
+              width: 'clamp(220px, 28vw, 380px)',
+              filter: 'drop-shadow(0 1.5vh 3vh rgba(0,0,0,0.25))'
             }}
           >
-            <img 
-              src={photoPaperImg} 
-              alt="Photo paper background" 
-              className="w-full h-auto mt-[10rem] scale-[250%] ml-[5rem]"
-            />
-            <div className="absolute inset-0 flex items-center justify-center p-[6%] pb-[14%] mt-[10rem] scale-[300%] ml-[5rem]">
+            {/* Background Photo Paper - Base for containment */}
+            <div className="relative w-full">
               <img 
-                src={moiImg} 
-                alt="Aakarshita Portrait" 
-                className="w-full h-full object-cover rounded-sm shadow-inner mt-[1.20rem] ml-2"
+                src={photoPaperImg} 
+                alt="Photo paper background" 
+                className="w-full h-auto block scale-[2.5]"
               />
+              {/* Actual Portrait - Positioned relative to paper frame */}
+              <div className="absolute top-[5%] left-[2%] w-[84%] h-[78%] flex items-center justify-center">
+                <img 
+                  src={moiImg} 
+                  alt="Aakarshita Portrait" 
+                  className=" w-full h-full object-cover rounded-sm shadow-inner scale-[2.25]"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Heading at background's bottom left */}
-          <div ref={headingRef} className="heading-wrapper relative mb-[2vh] lg:mb-[4vh] mt-[12vh] -ml-[4vh] lg:-ml-[8vh] select-none">
+          {/* Heading */}
+          <div ref={headingRef} className="heading-wrapper relative mt-[10vh] lg:mt-[12vh] lg:mb-[4vh] lg:-ml-[2vh] select-none text-center lg:text-left">
             <span 
-              className="a-bit absolute -top-15 lg:-top-2 -left-4 z-10 font-script text-[clamp(1.5rem,4vw,3.5rem)] text-white"
+              className="a-bit absolute -top-[3.5vh] lg:-top-[5vh] left-[0%] lg:left-[0%] z-10 font-script text-[clamp(1.2rem,4.5vw,3.2rem)] text-white whitespace-nowrap"
               style={{ 
-                transform: 'rotate(-25deg)', 
                 transformOrigin: 'bottom left',
-                textShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                textShadow: '0 0.2vh 1vh rgba(0,0,0,0.2)'
               }}
             >
               A bit
             </span>
             
             <h2 
-              className="about-me relative z-0 font-extenda leading-[0.9] uppercase tracking-[0.05rem] text-[#C61212] ml-[-1vw] lg:ml-50"
+              className="about-me relative z-0 font-extenda leading-[0.9] uppercase tracking-[0.05rem] text-[#C61212]"
               style={{ 
-                fontSize: 'clamp(50px, 7vw, 130px)',
+                fontSize: 'clamp(45px, 9vw, 140px)',
               }}
             >
               About Me
@@ -121,61 +125,66 @@ const AboutMe: React.FC = () => {
         </div>
 
         {/* 3. Right Side: Notepad Wrapper */}
-        <div className="relative w-full lg:w-[250%] flex justify-center lg:justify-end items-center mt-[2vh] lg:mt-0 -mr-[8vw]">
+        <div className="relative w-full lg:w-[60%] flex justify-center lg:justify-end items-center mt-[4vh] lg:mt-0">
           <div 
             ref={notepadRef}
-            className="notepad-wrapper relative"
+            className="notepad-wrapper relative w-[90%] lg:w-full -rotate-[8deg]"
             style={{
-              width: 'clamp(620px, 55vw, 1080px)', 
-              filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.4))'
+              maxWidth: '60vw',
+              filter: 'drop-shadow(0 2.5vh 5vh rgba(0,0,0,0.4))',
             }}
           >
-            <img 
-              src={notepadImg} 
-              alt="Notepad" 
-              className="w-full h-auto scale-105 opacity-75 -rotate-[7deg]"
-            />
-            
-            {/* Content area inside notepad */}
-            <div 
-              className="absolute inset-0 p-[12%] pt-[18%] lg:pt-[15%] pb-[15%] flex flex-col items-start justify-between text-left text-black font-homemade leading-[1.4] overflow-y-auto mt-[13vh] max-h-[65%]"
-            >
-              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)]">
-                Hi! I am Aakarshita,
-                <span className="relative inline-block mx-1 px-[0.3rem] font-homemade">
-                  <span className="relative z-10 font-homemade text-white">a year III fashion design student</span>
-                  <span 
-                    className="absolute inset-0 bg-[#9A0606] opacity-100 -rotate-[] scale-100 skew-x-[-10deg]" 
-                    style={{ borderRadius: '20% 80% 30% 70% / 60% 30% 70% 40%' }}
-                  />
-                </span>
-                at Indian Institute of Art & Design Delhi.
-              </p>
+            <div className="relative w-full scale-100 lg:scale-105">
+              <img 
+                src={notepadImg} 
+                alt="Notepad" 
+                className="w-full h-auto opacity-85"
+              />
               
-              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)]">
-                My work is submerged in a universe that I created, with each project manifesting itself into a 
-                <span className="relative inline-block px-1 mx-1 font-homemade">
-                  persona.
-                  <img 
-                    src={circleDecor} 
-                    alt="" 
-                    className="about-circle-decor absolute -top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] max-w-none pointer-events-none z-10 mix-blend-multiply contrast-200 saturate-200 brightness-110"
-                    style={{ transform: 'translate(-50%, -50%) rotate(-5deg)' }}
-                  />
-                </span>
-              </p>
+              {/* Content area inside notepad */}
+              <div 
+                className="absolute inset-0 p-[10%] pt-[15%] lg:pt-[15%] pb-[10%] flex flex-col items-start justify-start text-left text-black font-homemade leading-[1.2] mt-[8%] lg:mt-[13vh] overflow-y-auto scrollbar-hide rotate-[8deg]"
+                style={{ maxHeight: '72%' }}
+              >
+                <div className="w-full space-y-[1vh] lg:space-y-[1.5vh]">
+                  <p className="font-homemade text-[clamp(1rem,3.2vw,2.1rem)]">
+                    Hi! I am Aakarshita,
+                    <span className="relative inline-block mx-[0.5vw] px-[0.5vw] font-homemade">
+                      <span className="relative z-10 font-homemade text-white">a year III fashion design student</span>
+                      <span 
+                        className="absolute inset-0 bg-[#9A0606] opacity-100" 
+                        style={{ borderRadius: '20% 80% 30% 70% / 60% 30% 70% 40%' }}
+                      />
+                    </span>
+                    at Indian Institute of Art & Design Delhi.
+                  </p>
+                  
+                  <p className="font-homemade text-[clamp(1rem,3.2vw,2.1rem)]">
+                    My work is submerged in a universe that I created, with each project manifesting itself into a 
+                    <span className="relative inline-block px-[0.5vw] mx-[0.5vw] font-homemade">
+                      persona.
+                      <img 
+                        src={circleDecor} 
+                        alt="" 
+                        className="about-circle-decor absolute top-[calc(-45%-5px)] left-[calc(50%+5px)] -translate-x-1/2 -translate-y-1/2 w-[151%] max-w-none pointer-events-none z-10 mix-blend-multiply contrast-200 saturate-200 brightness-110"
+                        style={{ transform: 'translate(-50%, -50%) rotate(-5deg)' }}
+                      />
+                    </span>
+                  </p>
 
-              <p className="font-homemade text-[calc(clamp(1.1rem,2.5vw,1.6rem)+10px)]">
-                I love 
-                <span className="relative inline-block mx-1 px-[0.3rem] font-homemade">
-                  <span className="relative z-10 font-homemade text-white">conspiracy theories</span>
-                  <span 
-                    className="absolute inset-0 bg-[#9A0606] opacity-100 rotate-1 scale-100 skew-x-[5deg] " 
-                    style={{ borderRadius: '70% 30% 80% 20% / 30% 60% 40% 70%' }}
-                  />
-                </span>, 
-                humanoid creatures, dance, music, and every other way that allows me to express.
-              </p>
+                  <p className="font-homemade text-[clamp(1rem,3.2vw,2.1rem)]">
+                    I love 
+                    <span className="relative inline-block mx-[0.5vw] px-[0.5vw] font-homemade">
+                      <span className="relative z-10 font-homemade text-white">conspiracy theories</span>
+                      <span 
+                        className="absolute inset-0 bg-[#9A0606] opacity-100" 
+                        style={{ borderRadius: '70% 30% 80% 20% / 30% 60% 40% 70%' }}
+                      />
+                    </span>, 
+                    humanoid creatures, dance, music, and every other way that allows me to express.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -49,7 +49,7 @@ const projects: ProjectData[] = [
   
   { title: "Dinner's Ready - Transform 2", video: "/videos/digital_work.mp4", 
     poster: "/poster/TR2.jpeg",
-    pdf: "https://drive.google.com/file/d/1tsoKRAe6p-jNfY0yh4wh7ijFLA5iM5V9/preview", 
+    pdf: "https://drive.google.com/file/d/1ZzU6PsPROInW2zHAuUTfbCnLKdc4U8x5/preview", 
     index: "06/09", 
     gridClass: "right_transform" },
   

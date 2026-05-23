@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Preloader from './components/Preloader'
 import { Route, Routes } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import useLenis from './hooks/useLenis'
 import HomePage from './pages/HomePage'
 
@@ -16,6 +17,7 @@ function App() {
       <Preloader />
       <Cursor />
       <Navbar />
+      <SpeedInsights />
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}

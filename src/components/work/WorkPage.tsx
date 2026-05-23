@@ -47,9 +47,9 @@ const projects: ProjectData[] = [
     index: "05/09", 
     gridClass: "transform_ii" },
   
-  { title: "NOIR NEXUS: PASSION PROJECT", video: "/videos/digital_work.mp4", 
-    poster: "/poster/noir-nexus.jpeg",
-    pdf: "https://drive.google.com/file/d/1CdW_r7YpccIAXCByTDjZcw3sgxtWD3KX/preview", 
+  { title: "Dinner's Ready - Transform 2", video: "/videos/digital_work.mp4", 
+    poster: "/poster/TR2.jpeg",
+    pdf: "https://drive.google.com/file/d/1tsoKRAe6p-jNfY0yh4wh7ijFLA5iM5V9/preview", 
     index: "06/09", 
     gridClass: "right_transform" },
   
